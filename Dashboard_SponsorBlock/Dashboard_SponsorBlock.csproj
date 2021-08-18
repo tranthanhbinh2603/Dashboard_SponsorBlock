@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB631950-7B2D-43E4-9BB8-F32828E6639F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dashboard_SponsorBlock</RootNamespace>
+    <AssemblyName>Dashboard SponsorBlock</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bin\Debug\tải_xuống-removebg-preview.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\Download\Compressed\Guna_UI_Framework_Ultimate_2.0.0.1_Downloadly.ir\Guna UI Framework Ultimate 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Function\Class_Root.cs" />
+    <Compile Include="Function\Class_Settings.cs" />
+    <Compile Include="Function\Class_Step1.cs" />
+    <Compile Include="Function\Class_Step2.cs" />
+    <Compile Include="Function\Class_Step3.cs" />
+    <Compile Include="Function\Class_Step4.cs" />
+    <Compile Include="Message Box\Fr_1Button.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Message Box\Fr_1Button.Designer.cs">
+      <DependentUpon>Fr_1Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Message Box\Fr_2Button.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Message Box\Fr_2Button.Designer.cs">
+      <DependentUpon>Fr_2Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Message Box\Fr_3Button.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Message Box\Fr_3Button.Designer.cs">
+      <DependentUpon>Fr_3Button.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Message Box\Fr_SigninGmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Message Box\Fr_SigninGmail.Designer.cs">
+      <DependentUpon>Fr_SigninGmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\UC_Settings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\UC_Settings.Designer.cs">
+      <DependentUpon>UC_Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\UC_Step1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\UC_Step1.Designer.cs">
+      <DependentUpon>UC_Step1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\UC_Step2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\UC_Step2.Designer.cs">
+      <DependentUpon>UC_Step2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\UC_Step3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\UC_Step3.Designer.cs">
+      <DependentUpon>UC_Step3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Control\UC_Step4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User Control\UC_Step4.Designer.cs">
+      <DependentUpon>UC_Step4.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Message Box\Fr_1Button.resx">
+      <DependentUpon>Fr_1Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Message Box\Fr_2Button.resx">
+      <DependentUpon>Fr_2Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Message Box\Fr_3Button.resx">
+      <DependentUpon>Fr_3Button.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\UC_Settings.resx">
+      <DependentUpon>UC_Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\UC_Step1.resx">
+      <DependentUpon>UC_Step1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\UC_Step2.resx">
+      <DependentUpon>UC_Step2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\UC_Step3.resx">
+      <DependentUpon>UC_Step3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Control\UC_Step4.resx">
+      <DependentUpon>UC_Step4.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\icons8_minimize_window_50px_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\icons8_delete_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bin\Debug\tải_xuống-removebg-preview.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.92.0.4515.10700\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.92.0.4515.10700\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.92.0.4515.10700\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.92.0.4515.10700\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,21 @@
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.csprojResolveAssemblyReference.cache
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.Properties.Resources.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.csproj.GenerateResource.Cache
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\Guna.UI2.dll
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.User_Control.UC_Step2.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.User_Control.UC_Step3.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.User_Control.UC_Step4.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.User_Control.UC_Settings.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.Dashboard.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.Message_Box.Fr_2Button.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.Message_Box.Fr_3Button.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\Dashboard SponsorBlock.exe.config
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\Dashboard SponsorBlock.exe
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\Dashboard SponsorBlock.pdb
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard SponsorBlock.g.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard SponsorBlock.exe
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard SponsorBlock.pdb
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.Message_Box.Fr_1Button.resources
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\WebDriver.dll
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\WebDriver.xml
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.User_Control.UC_Step1.resources
