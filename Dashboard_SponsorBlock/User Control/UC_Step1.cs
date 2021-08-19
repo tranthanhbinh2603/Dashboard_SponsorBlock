@@ -44,10 +44,7 @@ namespace Dashboard_SponsorBlock.User_Control
 
         void RunningPage(List<String> page, int[]pc)
         {
-            // Tạo list chứa video
-            List<VideoInfo> listvideo = new List<VideoInfo>();
-
-            //Bắt đầu tạo process
+            #region Tạo các trình Selenium
             List<ChromeDriver> listChrome = new List<ChromeDriver>();
             var driverService = ChromeDriverService.CreateDefaultService();
             driverService.HideCommandPromptWindow = true;
@@ -60,21 +57,24 @@ namespace Dashboard_SponsorBlock.User_Control
                 ChromeDriver driver = new ChromeDriver(driverService, option);
                 listChrome.Add(driver);
             }
+            #endregion
+
             for (int i = 0; i < npdNumberThread.Value; i++)
             {
                 if (i == 0)
                 {
                     int copyi = i;
+                    List<VideoInfo> listvideo = new List<VideoInfo>();
                     Thread thr = new Thread(() =>
                     {
                         for (int z = 0; z < pc[copyi]; z++)
                         {
-                            //Tách dữ liệu
+                            #region Tách dữ liệu tạo ra 2 trường Page và List chứa những video trước đó
                             string link = page[z].Substring(0, page[z].IndexOf(','));
                             string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
+                            #endregion
 
-                            //Xử lí vấn đề quét page
-                            int cs = 0;
+                            #region Đi đến trang cần tìm
                             if (link.IndexOf("https://") == -1)
                             {
                                 listChrome[copyi].Navigate().GoToUrl("https://" + link);
@@ -83,39 +83,34 @@ namespace Dashboard_SponsorBlock.User_Control
                             {
                                 listChrome[copyi].Navigate().GoToUrl(link);
                             }
+                            #endregion
 
-                            Regex reg = new Regex(@"<a id=""video-title"" class=""yt-simple-endpoint style-scope ytd-grid-video-renderer"" aria-label="".*?"" title=""(?<Name_Video>.*?)"" href=""(?<Link>.*?)"">.*?</a>");
-                            foreach (Match item in reg.Matches(listChrome[copyi].PageSource.ToString()))
-                            {
-                                foreach (Capture cap in item.Groups["Link"].Captures)
-                                {
-                                    listvideo.Add(new VideoInfo() { IDVideo = cap.ToString().Substring(cap.ToString().IndexOf('=') + 1, cap.ToString().Length - cap.ToString().IndexOf('=') - 1) });
-                                }
-                                foreach (Capture cap1 in item.Groups["Name_Video"].Captures)
-                                {
-                                    listvideo[cs].NameVideo = WebUtility.HtmlDecode(cap1.ToString());
-                                    cs++;
-                                }
-                            }
-                            cs = 0;
-                            Regex reg1 = new Regex(@"<span id=""text"" class=""style-scope ytd-thumbnail-overlay-time-status-renderer"" aria-label=""(?<Time>.*?)"">", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.Singleline);
-                            foreach (Match item in reg1.Matches(listChrome[copyi].PageSource.ToString()))
-                            {
-                                foreach (Capture cap1 in item.Groups["Time"].Captures)
-                                {
-                                    string time = Class_Step1.GetTime(WebUtility.HtmlDecode(cap1.ToString()));
-                                    listvideo[cs].Time = time; 
-                                    cs++;
-                                }
-                            }
-                            string reschannel = "";
+                            #region Tạo list chứa các thông tin: link, name, time, name channel
+                            List<string> linkVideo = new List<string>();
+                            List<string> nameVideo = new List<string>();
+                            List<string> timeVideo = new List<string>();
 
-                            Regex reg2 = new Regex(@"<yt-formatted-string id=""text"" title="""" class=""style-scope ytd-channel-name"">(?<NameChannel>.*?)</yt-formatted-string>");
-                            reschannel = reg2.Matches(listChrome[copyi].PageSource.ToString())[0].Groups["NameChannel"].Captures[0].ToString();
-                            foreach (var item in listvideo)
+                            Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
+                            Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
+                            Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
+
+                            string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
+                            #endregion
+
+                            #region Hợp nhất lại thành list
+                            for (int k = 0; k < nameVideo.Count; k++)
                             {
-                                item.NameChannel = reschannel;
+                                listvideo.Add(new VideoInfo()
+                                {
+                                    IDVideo = linkVideo[k],
+                                    NameVideo = nameVideo[k],
+                                    Time = timeVideo[k],
+                                    NameChannel = nameChannel
+                                });
                             }
+                            #endregion
+
+                            #region Ghi vào file.
                             Invoke((Action)(() =>
                             {
                                 using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
@@ -124,8 +119,11 @@ namespace Dashboard_SponsorBlock.User_Control
                                     {
                                         sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
                                     }
-                                }  
+                                }
                             }));
+                            #endregion
+
+                            #region Xoá toàn bộ Video trong List, để chuẩn bị quét page khác
                             if (listvideo.Count >= 1)
                             {
                                 while (listvideo.Count != 0)
@@ -133,49 +131,99 @@ namespace Dashboard_SponsorBlock.User_Control
                                     listvideo.RemoveAt(0);
                                 }
                             }
+                            #endregion
                         }
+                        #region Chạy xong Page rồi thì tắt Sele và xoá trong mảng để cho hệ thống biết mà dừng Thread sang bước tiếp theo
                         listChrome[copyi].Quit();
                         listChrome.Remove(listChrome[copyi]);
+                        #endregion
                     });
                     thr.Start();
-
-                    //for (int z = 0; z <= pc[i]; z++)
-                    //{
-                    //    //Tách dữ liệu
-                    //    string link = page[z].Substring(0, page[z].IndexOf(','));
-                    //    string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
-
-                    //    //Xử lí vấn đề quét page
-                    //    listChrome[i].Navigate().GoToUrl("https://" + link);
-                    //    Thread.Sleep(1000);
-                    //}
-                    //listChrome[i].Quit();
-                    //listChrome.Remove(listChrome[i]);
                 }
                 else
                 {
-                    //Thread thr = new Thread(() =>
-                    //{
-                    //    for (int z = pc[i - 2]; z < pc[i - 1]; z++)
-                    //    {
-                    //        //Tách dữ liệu
-                    //        string link = page[z].Substring(1, page[z].IndexOf(',') - 1);
-                    //        string videoPrevious = page[z].Substring(page[z].IndexOf(','), page[z].Length - page[z].IndexOf(','));
+                    int copyi = i;
+                    List<VideoInfo> listvideo = new List<VideoInfo>();
+                    Thread thr = new Thread(() =>
+                    {
+                        for (int z = pc[i - 2]; z < pc[i - 1]; z++)
+                        {
+                            #region Tách dữ liệu tạo ra 2 trường Page và List chứa những video trước đó
+                            string link = page[z].Substring(0, page[z].IndexOf(','));
+                            string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
+                            #endregion
 
-                    //        //Xử lí vấn đề quét page
-                    //        listChrome[i].Navigate().GoToUrl(link);
-                    //        Thread.Sleep(8000);
-                    //    }
-                    //    //Class_Step1.Get_Video_InPage(1, pc[i - 1]);
-                    //});
-                    //thr.Start();
-                    MessageBox.Show("Có vẽ vượt quá");
+                            #region Đi đến trang cần tìm
+                            if (link.IndexOf("https://") == -1)
+                            {
+                                listChrome[copyi].Navigate().GoToUrl("https://" + link);
+                            }
+                            else
+                            {
+                                listChrome[copyi].Navigate().GoToUrl(link);
+                            }
+                            #endregion
+
+                            #region Tạo list chứa các thông tin: link, name, time, name channel
+                            List<string> linkVideo = new List<string>();
+                            List<string> nameVideo = new List<string>();
+                            List<string> timeVideo = new List<string>();
+
+                            Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
+                            Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
+                            Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
+
+                            string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
+                            #endregion
+
+                            #region Hợp nhất lại thành list
+                            for (int k = 0; k < nameVideo.Count; k++)
+                            {
+                                listvideo.Add(new VideoInfo()
+                                {
+                                    IDVideo = linkVideo[k],
+                                    NameVideo = nameVideo[k],
+                                    Time = timeVideo[k],
+                                    NameChannel = nameChannel
+                                });
+                            }
+                            #endregion
+
+                            #region Ghi vào file.
+                            Invoke((Action)(() =>
+                            {
+                                using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
+                                {
+                                    foreach (var item in listvideo)
+                                    {
+                                        sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
+                                    }
+                                }
+                            }));
+                            #endregion
+
+                            #region Xoá toàn bộ Video trong List, để chuẩn bị quét page khác
+                            if (listvideo.Count >= 1)
+                            {
+                                while (listvideo.Count != 0)
+                                {
+                                    listvideo.RemoveAt(0);
+                                }
+                            }
+                            #endregion
+                        }
+                        #region Chạy xong Page rồi thì tắt Sele và xoá trong mảng để cho hệ thống biết mà dừng Thread sang bước tiếp theo
+                        listChrome[copyi].Quit();
+                        listChrome.Remove(listChrome[copyi]);
+                        #endregion
+                    });
+                    thr.Start();
                 }
             }
 
             while (listChrome.Count != 0)
             {
-                Thread.Sleep(500);
+               
             }
 
             MessageBox.Show("Đã xong");
