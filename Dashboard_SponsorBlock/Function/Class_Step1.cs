@@ -81,5 +81,20 @@ namespace Dashboard_SponsorBlock.Function
             }
             return timeres;
         }
+
+        public static int Scan_2_List(List<string> listall, List<string> listpre, int cs_start)
+        {
+            for (int i = cs_start - 1; i < listall.Count; i++)
+            {
+                for (int z = 0; z < listpre.Count; z++)
+                {
+                    if (listall[i] == listpre[z])
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
     }
 }

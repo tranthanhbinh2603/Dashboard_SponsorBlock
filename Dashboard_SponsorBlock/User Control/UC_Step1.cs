@@ -1,4 +1,5 @@
 ﻿using Dashboard_SponsorBlock.Function;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -64,9 +65,10 @@ namespace Dashboard_SponsorBlock.User_Control
                 if (i == 0)
                 {
                     int copyi = i;
+                    int cs_video = 1;
                     List<VideoInfo> listvideo = new List<VideoInfo>();
                     Thread thr = new Thread(() =>
-                    {
+                    {  
                         for (int z = 0; z < pc[copyi]; z++)
                         {
                             #region Tách dữ liệu tạo ra 2 trường Page và List chứa những video trước đó
@@ -74,7 +76,7 @@ namespace Dashboard_SponsorBlock.User_Control
                             string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
                             #endregion
 
-                            #region Đi đến trang cần tìm
+                            #region Đi đến trang cần tìm. Tiện lấy tên kênh luôn.
                             if (link.IndexOf("https://") == -1)
                             {
                                 listChrome[copyi].Navigate().GoToUrl("https://" + link);
@@ -83,22 +85,66 @@ namespace Dashboard_SponsorBlock.User_Control
                             {
                                 listChrome[copyi].Navigate().GoToUrl(link);
                             }
+                            string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
                             #endregion
 
                             #region Tạo list chứa các thông tin: link, name, time, name channel
                             List<string> linkVideo = new List<string>();
                             List<string> nameVideo = new List<string>();
                             List<string> timeVideo = new List<string>();
-
-                            Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
-                            Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
-                            Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
-
-                            string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
                             #endregion
 
+                            bool Next = true;
+                            while (Next)
+                            {   
+                                #region Thực thi lấy thông tin: link, name, time, name channel
+                                Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
+                                Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
+                                Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);                               
+                                #endregion
+
+                                #region Xác nhận ra được video cũ, video mới
+                                List<string> listVideoPre = new List<string>();
+                                string[] step = videoPrevious.Split(',');
+                                foreach (var item in step)
+                                {
+                                    listVideoPre.Add(item);
+                                }
+                                int kq = Class_Step1.Scan_2_List(linkVideo, listVideoPre, cs_video);
+                                if (kq == -1)
+                                {
+                                    IJavaScriptExecutor js = listChrome[copyi] as IJavaScriptExecutor;
+                                    Int64 dataFromJS = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
+                                    listChrome[copyi].ExecuteScript("window.scrollTo(0, " + dataFromJS + ");");
+
+                                    cs_video = linkVideo.Count;
+
+                                    linkVideo.Clear();
+                                    nameVideo.Clear();
+                                    timeVideo.Clear();
+
+                                    while (true)
+                                    {
+                                        Int64 dataFromJSNew = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
+                                        if (dataFromJSNew != dataFromJS)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    while (kq < linkVideo.Count)
+                                    {
+                                        linkVideo.Remove(linkVideo[kq]);
+                                    }
+                                    Next = false;
+                                }
+                                #endregion
+                            }
+
                             #region Hợp nhất lại thành list
-                            for (int k = 0; k < nameVideo.Count; k++)
+                            for (int k = 0; k < linkVideo.Count; k++)
                             {
                                 listvideo.Add(new VideoInfo()
                                 {
@@ -108,7 +154,7 @@ namespace Dashboard_SponsorBlock.User_Control
                                     NameChannel = nameChannel
                                 });
                             }
-                            #endregion
+                            #endregion                                                        
 
                             #region Ghi vào file.
                             Invoke((Action)(() =>
@@ -143,6 +189,7 @@ namespace Dashboard_SponsorBlock.User_Control
                 else
                 {
                     int copyi = i;
+                    int cs_video = 1;
                     List<VideoInfo> listvideo = new List<VideoInfo>();
                     Thread thr = new Thread(() =>
                     {
@@ -153,7 +200,7 @@ namespace Dashboard_SponsorBlock.User_Control
                             string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
                             #endregion
 
-                            #region Đi đến trang cần tìm
+                            #region Đi đến trang cần tìm. Tiện lấy tên kênh luôn.
                             if (link.IndexOf("https://") == -1)
                             {
                                 listChrome[copyi].Navigate().GoToUrl("https://" + link);
@@ -162,22 +209,66 @@ namespace Dashboard_SponsorBlock.User_Control
                             {
                                 listChrome[copyi].Navigate().GoToUrl(link);
                             }
+                            string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
                             #endregion
 
                             #region Tạo list chứa các thông tin: link, name, time, name channel
                             List<string> linkVideo = new List<string>();
                             List<string> nameVideo = new List<string>();
                             List<string> timeVideo = new List<string>();
-
-                            Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
-                            Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
-                            Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
-
-                            string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
                             #endregion
 
+                            bool Next = true;
+                            while (Next)
+                            {
+                                #region Thực thi lấy thông tin: link, name, time, name channel
+                                Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
+                                Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
+                                Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
+                                #endregion
+
+                                #region Xác nhận ra được video cũ, video mới
+                                List<string> listVideoPre = new List<string>();
+                                string[] step = videoPrevious.Split(',');
+                                foreach (var item in step)
+                                {
+                                    listVideoPre.Add(item);
+                                }
+                                int kq = Class_Step1.Scan_2_List(linkVideo, listVideoPre, cs_video);
+                                if (kq == -1)
+                                {
+                                    IJavaScriptExecutor js = listChrome[copyi] as IJavaScriptExecutor;
+                                    Int64 dataFromJS = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
+                                    listChrome[copyi].ExecuteScript("window.scrollTo(0, " + dataFromJS + ");");
+
+                                    cs_video = linkVideo.Count;
+
+                                    linkVideo.Clear();
+                                    nameVideo.Clear();
+                                    timeVideo.Clear();
+
+                                    while (true)
+                                    {
+                                        Int64 dataFromJSNew = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
+                                        if (dataFromJSNew != dataFromJS)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    while (kq < linkVideo.Count)
+                                    {
+                                        linkVideo.Remove(linkVideo[kq]);
+                                    }
+                                    Next = false;
+                                }
+                                #endregion
+                            }
+
                             #region Hợp nhất lại thành list
-                            for (int k = 0; k < nameVideo.Count; k++)
+                            for (int k = 0; k < linkVideo.Count; k++)
                             {
                                 listvideo.Add(new VideoInfo()
                                 {
@@ -187,7 +278,7 @@ namespace Dashboard_SponsorBlock.User_Control
                                     NameChannel = nameChannel
                                 });
                             }
-                            #endregion
+                            #endregion                                                        
 
                             #region Ghi vào file.
                             Invoke((Action)(() =>
