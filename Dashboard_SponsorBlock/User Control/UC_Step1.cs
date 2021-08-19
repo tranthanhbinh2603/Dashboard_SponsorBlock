@@ -317,7 +317,7 @@ namespace Dashboard_SponsorBlock.User_Control
                
             }
 
-            MessageBox.Show("Đã xong");
+
         }
 
         private void btChoosePathOutput_Click(object sender, System.EventArgs e)
@@ -428,48 +428,49 @@ namespace Dashboard_SponsorBlock.User_Control
                 
         private void btRun_Click(object sender, EventArgs e)
         {
-
             if (tbPathOutput.Text != "")
             {
-                //Lưu file lại
-                StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
-                stream.WriteLine(rtbListPage.Text);
-                stream.Close();
+                ////Lưu file lại
+                //StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
+                //stream.WriteLine(rtbListPage.Text);
+                //stream.Close();
 
-                //Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
-                int countLine = 0;
-                List<String> listdata = new List<string>();
-                StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage.txt");
-                string res = streread.ReadLine();
-                while (res != null)
-                {
-                    if (res != "")
-                    {
-                        countLine++;
-                        listdata.Add(res);
-                    }
-                    res = streread.ReadLine();
-                }
-                streread.Close();
-                int[] pc = new int[50];
-                for (int i = 0; i < 50; i++)
-                {
-                    pc[i] = 0;
-                }
-                Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
+                ////Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
+                //int countLine = 0;
+                //List<String> listdata = new List<string>();
+                //StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage.txt");
+                //string res = streread.ReadLine();
+                //while (res != null)
+                //{
+                //    if (res != "")
+                //    {
+                //        countLine++;
+                //        listdata.Add(res);
+                //    }
+                //    res = streread.ReadLine();
+                //}
+                //streread.Close();
+                //int[] pc = new int[50];
+                //for (int i = 0; i < 50; i++)
+                //{
+                //    pc[i] = 0;
+                //}
+                //Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
 
-                //Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
+                ////Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
 
-                StreamWriter stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
-                stream1.Close();
+                //StreamWriter stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
+                //stream1.Close();
 
-                //Thực thi đa luồng 
-                Thread thr = new Thread(() =>
-                {
-                    RunningPage(listdata, pc);
-                });
-                thr.Start();
+                ////Thực thi đa luồng 
+                //Thread thr = new Thread(() =>
+                //{
+                //    RunningPage(listdata, pc);
+                //});
+                //thr.Start();
 
+
+                Class_Step1.Get_UUID_SBlock_In_Video("cbacblacnlns");
             }   
         }
     }

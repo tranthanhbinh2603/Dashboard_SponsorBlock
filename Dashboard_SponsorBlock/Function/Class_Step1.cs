@@ -1,6 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using System.Text.RegularExpressions;
+using xNetStandart;
+
+public class Root
+{
+    public string category { get; set; }
+    public string actionType { get; set; }
+    public List<double> segment { get; set; }
+    public string UUID { get; set; }
+    public int videoDuration { get; set; }
+}
 
 namespace Dashboard_SponsorBlock.Function
 {
@@ -95,6 +105,22 @@ namespace Dashboard_SponsorBlock.Function
                 }
             }
             return -1;
+        }
+
+        public static bool Get_UUID_SBlock_In_Video(string IDvideo)
+        {
+            string[] res = new string[99];
+            HttpRequest http = new HttpRequest();
+            string req = http.Get("https://sponsor.ajay.app/api/skipSegments?videoID=uScHxtiRYYc&categories=[%22sponsor%22,%22intro%22,%22selfpromo%22,%22interaction%22,%22outro%22,%22preview%22,%22music_offtopic%22]").ToString();
+            Regex reg = new Regex(@"""UUID"":""(?<UUID>.*?)""");
+            foreach (Match item in reg.Matches(req))
+            {
+                foreach (Capture i in item.Groups["UUID"].Captures)
+                {
+                    
+                }
+            }
+            return true; //Trả về để thực thi kết thúc hàm.
         }
     }
 }

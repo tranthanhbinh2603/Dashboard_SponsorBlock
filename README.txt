@@ -1,0 +1,2 @@
+- Cần thêm đoạn code xử lí ngoại lệ đầu vào
+- Xử lí việc dead toàn bộ page (Page kéo đến cuối mà vẫn bị đơ, làm đơ thread)
