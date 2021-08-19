@@ -97,17 +97,42 @@ namespace Dashboard_SponsorBlock.User_Control
                                     cs++;
                                 }
                             }
+                            cs = 0;
+                            Regex reg1 = new Regex(@"<span id=""text"" class=""style-scope ytd-thumbnail-overlay-time-status-renderer"" aria-label=""(?<Time>.*?)"">", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.Singleline);
+                            foreach (Match item in reg1.Matches(listChrome[copyi].PageSource.ToString()))
+                            {
+                                foreach (Capture cap1 in item.Groups["Time"].Captures)
+                                {
+                                    string time = Class_Step1.GetTime(WebUtility.HtmlDecode(cap1.ToString()));
+                                    listvideo[cs].Time = time; 
+                                    cs++;
+                                }
+                            }
+                            string reschannel = "";
 
+                            Regex reg2 = new Regex(@"<yt-formatted-string id=""text"" title="""" class=""style-scope ytd-channel-name"">(?<NameChannel>.*?)</yt-formatted-string>");
+                            reschannel = reg2.Matches(listChrome[copyi].PageSource.ToString())[0].Groups["NameChannel"].Captures[0].ToString();
+                            foreach (var item in listvideo)
+                            {
+                                item.NameChannel = reschannel;
+                            }
                             Invoke((Action)(() =>
                             {
-                                StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
-                                foreach (var item in listvideo)
+                                using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
                                 {
-                                    stream.WriteLine("{0}, {1}", item.IDVideo, item.NameVideo);
-                                }
-                                stream.Close();
+                                    foreach (var item in listvideo)
+                                    {
+                                        sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
+                                    }
+                                }  
                             }));
-                            Thread.Sleep(1000);
+                            if (listvideo.Count >= 1)
+                            {
+                                while (listvideo.Count != 0)
+                                {
+                                    listvideo.RemoveAt(0);
+                                }
+                            }
                         }
                         listChrome[copyi].Quit();
                         listChrome.Remove(listChrome[copyi]);
@@ -268,14 +293,14 @@ namespace Dashboard_SponsorBlock.User_Control
             if (tbPathOutput.Text != "")
             {
                 //Lưu file lại
-                StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
+                StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
                 stream.WriteLine(rtbListPage.Text);
                 stream.Close();
 
                 //Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
                 int countLine = 0;
                 List<String> listdata = new List<string>();
-                StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllVideo.txt");
+                StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage.txt");
                 string res = streread.ReadLine();
                 while (res != null)
                 {
@@ -293,6 +318,11 @@ namespace Dashboard_SponsorBlock.User_Control
                     pc[i] = 0;
                 }
                 Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
+
+                //Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
+
+                StreamWriter stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
+                stream1.Close();
 
                 //Thực thi đa luồng 
                 Thread thr = new Thread(() =>
