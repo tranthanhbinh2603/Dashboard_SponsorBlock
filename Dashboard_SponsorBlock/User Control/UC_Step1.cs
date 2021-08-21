@@ -4,8 +4,6 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -13,13 +11,15 @@ namespace Dashboard_SponsorBlock.User_Control
 {
     public partial class UC_Step1 : UserControl
     {
+        #region Định nghĩa hàm liên quan
         class VideoInfo
         {
             public string IDVideo { get; set; }
             public string Time { get; set; }
             public string NameVideo { get; set; }
             public string NameChannel { get; set; }
-        }
+        }       
+        #endregion
 
         public UC_Step1()
         {
@@ -98,8 +98,7 @@ namespace Dashboard_SponsorBlock.User_Control
                             while (Next)
                             {   
                                 #region Thực thi lấy thông tin: link, name, time, name channel
-                                Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
-                                Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
+                                Class_Step1.Get_Link_And_Name_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo, ref nameVideo);
                                 Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);                               
                                 #endregion
 
@@ -181,7 +180,7 @@ namespace Dashboard_SponsorBlock.User_Control
                         }
                         #region Chạy xong Page rồi thì tắt Sele và xoá trong mảng để cho hệ thống biết mà dừng Thread sang bước tiếp theo
                         listChrome[copyi].Quit();
-                        listChrome.Remove(listChrome[copyi]);
+                        listChrome[copyi] = null;
                         #endregion
                     });
                     thr.Start();
@@ -193,7 +192,7 @@ namespace Dashboard_SponsorBlock.User_Control
                     List<VideoInfo> listvideo = new List<VideoInfo>();
                     Thread thr = new Thread(() =>
                     {
-                        for (int z = pc[i - 2]; z < pc[i - 1]; z++)
+                        for (int z = pc[copyi - 1]; z < pc[copyi]; z++)
                         {
                             #region Tách dữ liệu tạo ra 2 trường Page và List chứa những video trước đó
                             string link = page[z].Substring(0, page[z].IndexOf(','));
@@ -222,8 +221,7 @@ namespace Dashboard_SponsorBlock.User_Control
                             while (Next)
                             {
                                 #region Thực thi lấy thông tin: link, name, time, name channel
-                                Class_Step1.Get_Link_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo);
-                                Class_Step1.Get_Page_Video(listChrome[copyi].PageSource.ToString(), ref nameVideo);
+                                Class_Step1.Get_Link_And_Name_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo, ref nameVideo);
                                 Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
                                 #endregion
 
@@ -305,19 +303,115 @@ namespace Dashboard_SponsorBlock.User_Control
                         }
                         #region Chạy xong Page rồi thì tắt Sele và xoá trong mảng để cho hệ thống biết mà dừng Thread sang bước tiếp theo
                         listChrome[copyi].Quit();
-                        listChrome.Remove(listChrome[copyi]);
+                        listChrome[copyi] = null;
                         #endregion
                     });
                     thr.Start();
                 }
             }
 
-            while (listChrome.Count != 0)
+            bool nextStep = true;            
+            while (nextStep)
             {
-               
+                int countOff = 0;
+
+                for (int i = 0; i < listChrome.Count; i++)
+                {
+                    if (listChrome[i] == null)
+                    {
+                        countOff++;
+                    }
+                }
+                
+                if (countOff == npdNumberThread.Value)
+                {
+                    nextStep = false;
+                }
+            }
+
+            #region Tạo 1 list chứa toàn bộ ID Video. Cần cho bước tiếp theo
+            List<string> IDVideo = new List<string>();
+            List<string> AllInfoVideo = new List<string>();
+            StreamReader streread1 = new StreamReader(tbPathOutput.Text + @"\AllVideo.txt");
+            string res2 = streread1.ReadLine();
+            while (res2 != null)
+            {
+                AllInfoVideo.Add(res2);
+                IDVideo.Add(res2.Substring(0, res2.IndexOf(',')));
+                res2 = streread1.ReadLine();
+            }
+            #endregion
+
+            #region Thực thi lấy toàn bộ UUID cho tất cả các video
+
+            #region Thiết lập cơ bản
+            int countThread = 8;
+            List<bool?> list = new List<bool?>(countThread);
+            for (int i = 0; i < countThread; i++)
+            {
+                list.Add(false);
+            }
+            List<string> listUUID = new List<string>();
+
+            int[] pc2 = new int[countThread];
+            Class_Root.Chiaphan(IDVideo.Count, countThread, ref pc2);
+            #endregion
+
+            if (IDVideo.Count <= countThread)
+            {
+                list.Clear();
+            }
+            else
+            {
+                for (int i = 0; i < countThread; i++)
+                {
+                    if (i == 0)
+                    {
+                        int copyi = i;
+                        List<string> temp = new List<string>();
+                        bool haveRes = false;
+                        for (int z = 0; z < pc2[copyi]; z++)
+                        {
+                            haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z], temp);
+                            if (haveRes == true)
+                            {
+
+                            }
+                        }
+                        list[copyi] = null;
+                    }
+                    else
+                    {
+                        int copyi = i;
+                        for (int z = pc2[copyi - 1]; z < pc2[copyi]; z++)
+                        {
+
+                        }
+                        list[copyi] = null;
+                    }
+                }
             }
 
 
+            nextStep = true;
+            while (nextStep)
+            {
+                int countOff = 0;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i] == null)
+                    {
+                        countOff++;
+                    }
+                }
+
+                if (countOff == countThread)
+                {
+                    nextStep = false;
+                }
+            }
+            #endregion
+            MessageBox.Show("Đã xong");
         }
 
         private void btChoosePathOutput_Click(object sender, System.EventArgs e)
@@ -430,48 +524,51 @@ namespace Dashboard_SponsorBlock.User_Control
         {
             if (tbPathOutput.Text != "")
             {
-                ////Lưu file lại
-                //StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
-                //stream.WriteLine(rtbListPage.Text);
-                //stream.Close();
+                if (rbChooseCrawl.Checked == true)
+                {
+                    #region Lưu file lại
+                    StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
+                    stream.WriteLine(rtbListPage.Text);
+                    stream.Close();
+                    #endregion
 
-                ////Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
-                //int countLine = 0;
-                //List<String> listdata = new List<string>();
-                //StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage.txt");
-                //string res = streread.ReadLine();
-                //while (res != null)
-                //{
-                //    if (res != "")
-                //    {
-                //        countLine++;
-                //        listdata.Add(res);
-                //    }
-                //    res = streread.ReadLine();
-                //}
-                //streread.Close();
-                //int[] pc = new int[50];
-                //for (int i = 0; i < 50; i++)
-                //{
-                //    pc[i] = 0;
-                //}
-                //Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
+                    #region Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
+                    int countLine = 0;
+                    List<String> listdata = new List<string>();
+                    StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage.txt");
+                    string res = streread.ReadLine();
+                    while (res != null)
+                    {
+                        if (res != "")
+                        {
+                            countLine++;
+                            listdata.Add(res);
+                        }
+                        res = streread.ReadLine();
+                    }
+                    streread.Close();
+                    int[] pc = new int[50];
+                    for (int i = 0; i < 50; i++)
+                    {
+                        pc[i] = 0;
+                    }
+                    Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
+                    #endregion
 
-                ////Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
+                    #region Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
+                    StreamWriter stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
+                    stream1.Close();
+                    #endregion
 
-                //StreamWriter stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
-                //stream1.Close();
-
-                ////Thực thi đa luồng 
-                //Thread thr = new Thread(() =>
-                //{
-                //    RunningPage(listdata, pc);
-                //});
-                //thr.Start();
-
-
-                Class_Step1.Get_UUID_SBlock_In_Video("cbacblacnlns");
-            }   
+                    #region Thực thi đa luồng lấy toàn bộ video
+                    Thread thr = new Thread(() =>
+                    {
+                        RunningPage(listdata, pc);
+                    });
+                    thr.Start();
+                    #endregion
+                }
+            }
         }
     }
 }
