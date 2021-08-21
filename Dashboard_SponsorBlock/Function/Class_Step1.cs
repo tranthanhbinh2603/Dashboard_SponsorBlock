@@ -5,6 +5,10 @@ using xNetStandart;
 
 namespace Dashboard_SponsorBlock.Function
 {
+    class groupUUID
+    {
+        public string[] gr = new string[10];
+    }
     class Class_Step1
     {
         public static void Get_Link_And_Name_Video(string pageSource, ref List<string> resLink, ref List<string> resName)
@@ -108,7 +112,7 @@ namespace Dashboard_SponsorBlock.Function
             {
                 HttpRequest http = new HttpRequest();
                 http.ConnectTimeout = 1500;
-                string req = http.Get("https://sponsor.ajay.app/api/skipSegments?videoID="+ID_Video+"&categories=[%22sponsor%22,%22intro%22,%22selfpromo%22,%22interaction%22,%22outro%22,%22preview%22,%22music_offtopic%22]").ToString();
+                string req = http.Get("https://sponsor.ajay.app/api/skipSegments?videoID=" + ID_Video + "&categories=[%22sponsor%22,%22intro%22,%22selfpromo%22,%22interaction%22,%22outro%22,%22preview%22,%22music_offtopic%22]").ToString();
                 Regex reg = new Regex(@"""UUID"":""(?<UUID>.*?)""");
                 foreach (Match item in reg.Matches(req))
                 {
@@ -119,7 +123,7 @@ namespace Dashboard_SponsorBlock.Function
                 }
                 return true;
             }
-            catch (HttpException)
+            catch (HttpException e)
             {
                 return false;
             }

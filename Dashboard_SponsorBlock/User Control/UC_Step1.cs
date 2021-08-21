@@ -60,6 +60,7 @@ namespace Dashboard_SponsorBlock.User_Control
             }
             #endregion
 
+            #region Thực thi lấy toàn bộ video mới
             for (int i = 0; i < npdNumberThread.Value; i++)
             {
                 if (i == 0)
@@ -309,7 +310,9 @@ namespace Dashboard_SponsorBlock.User_Control
                     thr.Start();
                 }
             }
+            #endregion
 
+            #region Kiểm tra để sang bước tiếp theo
             bool nextStep = true;            
             while (nextStep)
             {
@@ -328,6 +331,7 @@ namespace Dashboard_SponsorBlock.User_Control
                     nextStep = false;
                 }
             }
+            #endregion
 
             #region Tạo 1 list chứa toàn bộ ID Video. Cần cho bước tiếp theo
             List<string> IDVideo = new List<string>();
@@ -345,13 +349,12 @@ namespace Dashboard_SponsorBlock.User_Control
             #region Thực thi lấy toàn bộ UUID cho tất cả các video
 
             #region Thiết lập cơ bản
-            int countThread = 8;
+            int countThread = 7;
             List<bool?> list = new List<bool?>(countThread);
             for (int i = 0; i < countThread; i++)
             {
                 list.Add(false);
             }
-            List<string> listUUID = new List<string>();
 
             int[] pc2 = new int[countThread];
             Class_Root.Chiaphan(IDVideo.Count, countThread, ref pc2);
@@ -359,7 +362,42 @@ namespace Dashboard_SponsorBlock.User_Control
 
             if (IDVideo.Count <= countThread)
             {
-                list.Clear();
+                #region Nếu số lượng video ít hơn số luồng
+                List<string> temp = new List<string>();
+                bool haveRes = false;
+                for (int z = 0; z < IDVideo.Count; z++)
+                {
+                    haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z], temp);
+                    if (haveRes == true)
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\UUID.txt", true))
+                            {
+                                foreach (var item in temp)
+                                {
+                                    sw.WriteLine("{0}", item);
+                                }
+                            }
+                        }));
+                    }
+                    else
+                    {
+                        Invoke((Action)(() =>
+                        {
+                            using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                            {
+                                sw.WriteLine("{0}", AllInfoVideo[z]);
+                            }
+                        }));
+                    }
+                    temp.Clear();
+                }
+                for (int i = 0; i < list.Count; i++)
+                {
+                    list[i] = null;
+                }
+                #endregion
             }
             else
             {
@@ -367,6 +405,7 @@ namespace Dashboard_SponsorBlock.User_Control
                 {
                     if (i == 0)
                     {
+                        #region Thực thi lấy toàn bộ UUID
                         int copyi = i;
                         List<string> temp = new List<string>();
                         bool haveRes = false;
@@ -375,19 +414,68 @@ namespace Dashboard_SponsorBlock.User_Control
                             haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z], temp);
                             if (haveRes == true)
                             {
-
+                                Invoke((Action)(() =>
+                                {
+                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\UUID.txt", true))
+                                    {
+                                        foreach (var item in temp)
+                                        {
+                                            sw.WriteLine("{0}", item);
+                                        }
+                                    }
+                                }));
                             }
+                            else
+                            {
+                                Invoke((Action)(() =>
+                                {
+                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                                    {
+                                        sw.WriteLine("{0}", AllInfoVideo[z]);
+                                    }
+                                }));
+                            }
+                            temp.Clear();
                         }
                         list[copyi] = null;
+                        #endregion
                     }
                     else
                     {
+                        #region Thực thi lấy toàn bộ UUID
                         int copyi = i;
+                        bool haveRes = false;
+                        List<string> temp = new List<string>();
                         for (int z = pc2[copyi - 1]; z < pc2[copyi]; z++)
                         {
-
+                            haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z], temp);
+                            if (haveRes == true)
+                            {
+                                Invoke((Action)(() =>
+                                {
+                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\UUID.txt", true))
+                                    {
+                                        foreach (var item in temp)
+                                        {
+                                            sw.WriteLine("{0}", item);
+                                        }
+                                    }
+                                }));
+                            }
+                            else
+                            {
+                                Invoke((Action)(() =>
+                                {
+                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                                    {
+                                        sw.WriteLine("{0}", AllInfoVideo[z]);
+                                    }
+                                }));
+                            }
+                            temp.Clear();
                         }
                         list[copyi] = null;
+                        #endregion
                     }
                 }
             }
@@ -410,6 +498,24 @@ namespace Dashboard_SponsorBlock.User_Control
                     nextStep = false;
                 }
             }
+            #endregion
+
+            #region Lấy toàn bộ thông tin về các UUID.
+
+            #region Đọc hết toàn bộ UUID
+            List<string> listUUID = new List<string>();
+            StreamReader streread2 = new StreamReader(tbPathOutput.Text + @"\UUID.txt");
+            string res3 = streread2.ReadLine();
+            while (res3 != null)
+            {               
+                listUUID.Add(res3);
+                res3 = streread2.ReadLine();
+            }
+            #endregion
+
+            #region Chia ra 1 phần 10 UUID
+            
+            #endregion
             #endregion
             MessageBox.Show("Đã xong");
         }
@@ -557,6 +663,10 @@ namespace Dashboard_SponsorBlock.User_Control
 
                     #region Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
                     StreamWriter stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
+                    stream1.Close();
+                    stream1 = new StreamWriter(tbPathOutput.Text + @"\UUID.txt");
+                    stream1.Close();
+                    stream1 = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt");
                     stream1.Close();
                     #endregion
 
