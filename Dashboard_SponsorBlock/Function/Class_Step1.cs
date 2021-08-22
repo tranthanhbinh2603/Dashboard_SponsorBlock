@@ -115,7 +115,7 @@ namespace Dashboard_SponsorBlock.Function
                 string req = http.Get("https://sponsor.ajay.app/api/skipSegments?videoID=" + ID_Video + "&categories=[%22sponsor%22,%22intro%22,%22selfpromo%22,%22interaction%22,%22outro%22,%22preview%22,%22music_offtopic%22]").ToString();
                 return true;
             }
-            catch (HttpException e)
+            catch (HttpException)
             {
                 return false;
             }

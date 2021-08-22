@@ -156,18 +156,42 @@ namespace Dashboard_SponsorBlock.User_Control
                                 }
                                 #endregion
 
+                                #region Loại bỏ các video không có thời gian
+                                listvideo.RemoveAll(r => r.Time == "0:0");
+                                #endregion
+
                                 #region Ghi vào file.
                                 Invoke((Action)(() =>
                                 {
-                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
+                                    if (listvideo.Count > 0)
                                     {
-                                        foreach (var item in listvideo)
+                                        using (StreamWriter sw1 = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt", true))
                                         {
-                                            sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
+                                            string strLinkVideo = "";
+                                            for (int a = 0; a < listvideo.Count - 1; a++)
+                                            {
+                                                strLinkVideo += listvideo[a].IDVideo + ",";
+                                            }
+                                            strLinkVideo += listvideo[listvideo.Count - 1].IDVideo;
+                                            sw1.WriteLine("{0},{1}", link, strLinkVideo);
+                                        }
+                                        using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
+                                        {
+                                            foreach (var item in listvideo)
+                                            {
+                                                sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
+                                            }
                                         }
                                     }
-                                }));
-                                #endregion
+                                    else
+                                    {
+                                        using (StreamWriter sw1 = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt", true))
+                                        {                                            
+                                            sw1.WriteLine("{0}", page[z]);
+                                        }
+                                    }
+                                    #endregion
+                                }));                               
 
                                 #region Xoá toàn bộ Video trong List, để chuẩn bị quét page khác
                                 if (listvideo.Count >= 1)
@@ -279,18 +303,43 @@ namespace Dashboard_SponsorBlock.User_Control
                                 }
                                 #endregion
 
+                                #region Loại bỏ các video không có thời gian
+                                listvideo.RemoveAll(r => r.Time == "0:0");
+                                #endregion
+
                                 #region Ghi vào file.
                                 Invoke((Action)(() =>
                                 {
-                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
+                                    if (listvideo.Count > 0)
                                     {
-                                        foreach (var item in listvideo)
+                                        using (StreamWriter sw1 = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt", true))
                                         {
-                                            sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
+                                            string strLinkVideo = "";
+                                            for (int a = 0; a < listvideo.Count - 1; a++)
+                                            {
+                                                strLinkVideo += listvideo[a].IDVideo + ",";
+                                            }
+                                            strLinkVideo += listvideo[listvideo.Count - 1].IDVideo;
+                                            sw1.WriteLine("{0},{1}", link, strLinkVideo);
+                                        }
+                                        using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt", true))
+                                        {
+                                            foreach (var item in listvideo)
+                                            {
+                                                sw.WriteLine("{0}, {1}, {2}, {3}", item.IDVideo, item.NameVideo, item.NameChannel, item.Time);
+                                            }
                                         }
                                     }
+                                    else
+                                    {
+                                        using (StreamWriter sw1 = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt", true))
+                                        {
+                                            sw1.WriteLine("{0}", page[z]);
+                                        }
+                                    }
+                                    #endregion
+
                                 }));
-                                #endregion
 
                                 #region Xoá toàn bộ Video trong List, để chuẩn bị quét page khác
                                 if (listvideo.Count >= 1)
@@ -589,34 +638,40 @@ namespace Dashboard_SponsorBlock.User_Control
         {
             if (tbPathOutput.Text != "")
             {
-                #region Lưu file lại
-                StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage_Backup.txt");
-                stream.WriteLine(rtbListPage.Text);
-                stream.Close();
-                #endregion
+                #region Khoá toàn bộ control
 
-                #region Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
-                int countLine = 0;
-                List<String> listdata = new List<string>();
-                StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage_Backup.txt");
-                string res = streread.ReadLine();
-                while (res != null)
-                {
-                    if (res != "")
-                    {
-                        countLine++;
-                        listdata.Add(res);
-                    }
-                    res = streread.ReadLine();
-                }
-                streread.Close();
-                int[] pc = new int[50];
-                for (int i = 0; i < 50; i++)
-                {
-                    pc[i] = 0;
-                }
-                Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
                 #endregion
+                List<String> listdata = new List<string>();
+                int[] pc = new int[50];
+                if (rbChooseCrawl.Checked == true)
+                {                    
+                    #region Lưu file lại
+                    StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\AllPage_Backup.txt");
+                    stream.WriteLine(rtbListPage.Text);
+                    stream.Close();
+                    #endregion
+
+                    #region Đếm dòng - Chia từng phần cho từng thread. Vừa ghi mảng link luôn
+                    int countLine = 0;
+                    StreamReader streread = new StreamReader(tbPathOutput.Text + @"\AllPage_Backup.txt");
+                    string res = streread.ReadLine();
+                    while (res != null)
+                    {
+                        if (res != "")
+                        {
+                            countLine++;
+                            listdata.Add(res);
+                        }
+                        res = streread.ReadLine();
+                    }
+                    streread.Close();
+                    for (int i = 0; i < 50; i++)
+                    {
+                        pc[i] = 0;
+                    }
+                    Class_Root.Chiaphan(countLine, (int)npdNumberThread.Value, ref pc);
+                    #endregion
+                }
 
                 #region Xoá sạch dữ liệu video, video có và không có SBlock, danh sách SBlocker
                 Invoke((Action)(() =>
@@ -626,12 +681,12 @@ namespace Dashboard_SponsorBlock.User_Control
                     {
                         stream1 = new StreamWriter(tbPathOutput.Text + @"\AllVideo.txt");
                         stream1.Close();
-                    }                       
+                        stream1 = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
+                        stream1.Close();
+                    }               
                     stream1 = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt");
                     stream1.Close();
                     stream1 = new StreamWriter(tbPathOutput.Text + @"\VideoWithSBlock.txt");
-                    stream1.Close();
-                    stream1 = new StreamWriter(tbPathOutput.Text + @"\AllPage.txt");
                     stream1.Close();
                 }));
                 #endregion
@@ -643,6 +698,10 @@ namespace Dashboard_SponsorBlock.User_Control
                 });
                 thr.Start();
                 #endregion
+            }
+            else
+            {
+
             }
         }
     }
