@@ -106,21 +106,13 @@ namespace Dashboard_SponsorBlock.Function
             return -1;
         }
 
-        public static bool Get_UUID_SBlock_In_Video(string ID_Video, List<string> res)
+        public static bool Get_UUID_SBlock_In_Video(string ID_Video)
         {
             try
             {
                 HttpRequest http = new HttpRequest();
                 http.ConnectTimeout = 1500;
                 string req = http.Get("https://sponsor.ajay.app/api/skipSegments?videoID=" + ID_Video + "&categories=[%22sponsor%22,%22intro%22,%22selfpromo%22,%22interaction%22,%22outro%22,%22preview%22,%22music_offtopic%22]").ToString();
-                Regex reg = new Regex(@"""UUID"":""(?<UUID>.*?)""");
-                foreach (Match item in reg.Matches(req))
-                {
-                    foreach (Capture i in item.Groups["UUID"].Captures)
-                    {
-                        res.Add(i.ToString());
-                    }
-                }
                 return true;
             }
             catch (HttpException e)

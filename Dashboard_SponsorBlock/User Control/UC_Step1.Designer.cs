@@ -54,9 +54,6 @@
             this.rbChooseImportListVideo = new Guna.UI2.WinForms.Guna2RadioButton();
             this.rbChooseCrawl = new Guna.UI2.WinForms.Guna2RadioButton();
             this.pbOptions = new System.Windows.Forms.Panel();
-            this.btGetPathVideo = new System.Windows.Forms.Button();
-            this.tbPathVideo = new System.Windows.Forms.TextBox();
-            this.lbPathVideo = new System.Windows.Forms.Label();
             this.gbOtherEvent.SuspendLayout();
             this.gbRestore.SuspendLayout();
             this.cbBackupFilePage.SuspendLayout();
@@ -367,9 +364,9 @@
             this.rbChooseImportListVideo.CheckedState.InnerOffset = -4;
             this.rbChooseImportListVideo.Location = new System.Drawing.Point(5, 240);
             this.rbChooseImportListVideo.Name = "rbChooseImportListVideo";
-            this.rbChooseImportListVideo.Size = new System.Drawing.Size(137, 20);
+            this.rbChooseImportListVideo.Size = new System.Drawing.Size(337, 20);
             this.rbChooseImportListVideo.TabIndex = 4;
-            this.rbChooseImportListVideo.Text = "Lấy qua Listvideo txt";
+            this.rbChooseImportListVideo.Text = "Lấy qua Listvideo txt (Có tệp AllVideo.txt ở trong thư mục)";
             this.rbChooseImportListVideo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.rbChooseImportListVideo.UncheckedState.BorderThickness = 2;
             this.rbChooseImportListVideo.UncheckedState.FillColor = System.Drawing.Color.Transparent;
@@ -401,42 +398,13 @@
             // 
             // pbOptions
             // 
-            this.pbOptions.Controls.Add(this.btGetPathVideo);
-            this.pbOptions.Controls.Add(this.tbPathVideo);
             this.pbOptions.Controls.Add(this.rbChooseImportListVideo);
-            this.pbOptions.Controls.Add(this.lbPathVideo);
             this.pbOptions.Controls.Add(this.rbChooseCrawl);
             this.pbOptions.Controls.Add(this.gbListPage);
             this.pbOptions.Location = new System.Drawing.Point(10, 66);
             this.pbOptions.Name = "pbOptions";
             this.pbOptions.Size = new System.Drawing.Size(999, 283);
             this.pbOptions.TabIndex = 16;
-            // 
-            // btGetPathVideo
-            // 
-            this.btGetPathVideo.Location = new System.Drawing.Point(874, 257);
-            this.btGetPathVideo.Name = "btGetPathVideo";
-            this.btGetPathVideo.Size = new System.Drawing.Size(113, 23);
-            this.btGetPathVideo.TabIndex = 17;
-            this.btGetPathVideo.Text = "Choose...";
-            this.btGetPathVideo.UseVisualStyleBackColor = true;
-            this.btGetPathVideo.Click += new System.EventHandler(this.btGetPathVideo_Click);
-            // 
-            // tbPathVideo
-            // 
-            this.tbPathVideo.Location = new System.Drawing.Point(96, 260);
-            this.tbPathVideo.Name = "tbPathVideo";
-            this.tbPathVideo.Size = new System.Drawing.Size(772, 21);
-            this.tbPathVideo.TabIndex = 16;
-            // 
-            // lbPathVideo
-            // 
-            this.lbPathVideo.AutoSize = true;
-            this.lbPathVideo.Location = new System.Drawing.Point(28, 263);
-            this.lbPathVideo.Name = "lbPathVideo";
-            this.lbPathVideo.Size = new System.Drawing.Size(70, 16);
-            this.lbPathVideo.TabIndex = 15;
-            this.lbPathVideo.Text = "Đường dẫn";
             // 
             // UC_Step1
             // 
@@ -486,9 +454,6 @@
         private System.Windows.Forms.RichTextBox rtbListPage;
         private Guna.UI2.WinForms.Guna2RadioButton rbChooseCrawl;
         private System.Windows.Forms.Panel pbOptions;
-        private System.Windows.Forms.TextBox tbPathVideo;
-        private System.Windows.Forms.Label lbPathVideo;
-        private System.Windows.Forms.Button btGetPathVideo;
         public System.Windows.Forms.GroupBox gbRestore;
         public System.Windows.Forms.GroupBox cbBackupFilePage;
         public System.Windows.Forms.Button btPasteClipboard;
