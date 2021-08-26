@@ -41,6 +41,9 @@
             this.btSaveAsFilePage = new System.Windows.Forms.Button();
             this.btSendPageMail = new System.Windows.Forms.Button();
             this.cbBackupFilePage = new System.Windows.Forms.GroupBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.lbUserPass = new System.Windows.Forms.Label();
             this.btCopyListPage = new System.Windows.Forms.Button();
             this.lbPathFileOutput = new System.Windows.Forms.Label();
             this.tbPathOutput = new Guna.UI2.WinForms.Guna2TextBox();
@@ -67,18 +70,18 @@
             this.gbOtherEvent.Controls.Add(this.btRun);
             this.gbOtherEvent.Controls.Add(this.btExit);
             this.gbOtherEvent.Controls.Add(this.btHelp);
-            this.gbOtherEvent.Location = new System.Drawing.Point(696, 357);
+            this.gbOtherEvent.Location = new System.Drawing.Point(696, 336);
             this.gbOtherEvent.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.gbOtherEvent.Name = "gbOtherEvent";
             this.gbOtherEvent.Padding = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.gbOtherEvent.Size = new System.Drawing.Size(306, 123);
+            this.gbOtherEvent.Size = new System.Drawing.Size(306, 144);
             this.gbOtherEvent.TabIndex = 11;
             this.gbOtherEvent.TabStop = false;
             this.gbOtherEvent.Text = "Các thao tác khác";
             // 
             // btRun
             // 
-            this.btRun.Location = new System.Drawing.Point(9, 24);
+            this.btRun.Location = new System.Drawing.Point(2, 34);
             this.btRun.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btRun.Name = "btRun";
             this.btRun.Size = new System.Drawing.Size(292, 27);
@@ -89,7 +92,7 @@
             // 
             // btExit
             // 
-            this.btExit.Location = new System.Drawing.Point(9, 86);
+            this.btExit.Location = new System.Drawing.Point(2, 96);
             this.btExit.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(292, 27);
@@ -100,7 +103,7 @@
             // 
             // btHelp
             // 
-            this.btHelp.Location = new System.Drawing.Point(9, 57);
+            this.btHelp.Location = new System.Drawing.Point(2, 67);
             this.btHelp.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btHelp.Name = "btHelp";
             this.btHelp.Size = new System.Drawing.Size(292, 27);
@@ -110,7 +113,7 @@
             // 
             // btPasteClipboard
             // 
-            this.btPasteClipboard.Location = new System.Drawing.Point(7, 24);
+            this.btPasteClipboard.Location = new System.Drawing.Point(14, 34);
             this.btPasteClipboard.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btPasteClipboard.Name = "btPasteClipboard";
             this.btPasteClipboard.Size = new System.Drawing.Size(245, 27);
@@ -121,7 +124,7 @@
             // 
             // btImportFile
             // 
-            this.btImportFile.Location = new System.Drawing.Point(7, 53);
+            this.btImportFile.Location = new System.Drawing.Point(14, 63);
             this.btImportFile.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btImportFile.Name = "btImportFile";
             this.btImportFile.Size = new System.Drawing.Size(245, 27);
@@ -135,18 +138,18 @@
             this.gbRestore.Controls.Add(this.btRewriteFilePage);
             this.gbRestore.Controls.Add(this.btPasteClipboard);
             this.gbRestore.Controls.Add(this.btImportFile);
-            this.gbRestore.Location = new System.Drawing.Point(422, 357);
+            this.gbRestore.Location = new System.Drawing.Point(422, 336);
             this.gbRestore.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.gbRestore.Name = "gbRestore";
             this.gbRestore.Padding = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.gbRestore.Size = new System.Drawing.Size(272, 123);
+            this.gbRestore.Size = new System.Drawing.Size(272, 144);
             this.gbRestore.TabIndex = 10;
             this.gbRestore.TabStop = false;
             this.gbRestore.Text = "Các thao tác cho restore file";
             // 
             // btRewriteFilePage
             // 
-            this.btRewriteFilePage.Location = new System.Drawing.Point(7, 86);
+            this.btRewriteFilePage.Location = new System.Drawing.Point(14, 96);
             this.btRewriteFilePage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btRewriteFilePage.Name = "btRewriteFilePage";
             this.btRewriteFilePage.Size = new System.Drawing.Size(245, 27);
@@ -157,7 +160,7 @@
             // 
             // tbMailSendPage
             // 
-            this.tbMailSendPage.Location = new System.Drawing.Point(146, 59);
+            this.tbMailSendPage.Location = new System.Drawing.Point(141, 58);
             this.tbMailSendPage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.tbMailSendPage.Name = "tbMailSendPage";
             this.tbMailSendPage.Size = new System.Drawing.Size(249, 21);
@@ -166,7 +169,7 @@
             // lbMailSendPage
             // 
             this.lbMailSendPage.AutoSize = true;
-            this.lbMailSendPage.Location = new System.Drawing.Point(1, 64);
+            this.lbMailSendPage.Location = new System.Drawing.Point(5, 61);
             this.lbMailSendPage.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lbMailSendPage.Name = "lbMailSendPage";
             this.lbMailSendPage.Size = new System.Drawing.Size(134, 16);
@@ -186,7 +189,7 @@
             // 
             // btSendPageMail
             // 
-            this.btSendPageMail.Location = new System.Drawing.Point(7, 89);
+            this.btSendPageMail.Location = new System.Drawing.Point(7, 107);
             this.btSendPageMail.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.btSendPageMail.Name = "btSendPageMail";
             this.btSendPageMail.Size = new System.Drawing.Size(385, 27);
@@ -197,19 +200,46 @@
             // 
             // cbBackupFilePage
             // 
+            this.cbBackupFilePage.Controls.Add(this.tbPassword);
+            this.cbBackupFilePage.Controls.Add(this.tbUsername);
             this.cbBackupFilePage.Controls.Add(this.tbMailSendPage);
+            this.cbBackupFilePage.Controls.Add(this.lbUserPass);
             this.cbBackupFilePage.Controls.Add(this.lbMailSendPage);
             this.cbBackupFilePage.Controls.Add(this.btCopyListPage);
             this.cbBackupFilePage.Controls.Add(this.btSaveAsFilePage);
             this.cbBackupFilePage.Controls.Add(this.btSendPageMail);
-            this.cbBackupFilePage.Location = new System.Drawing.Point(10, 357);
+            this.cbBackupFilePage.Location = new System.Drawing.Point(10, 336);
             this.cbBackupFilePage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.cbBackupFilePage.Name = "cbBackupFilePage";
             this.cbBackupFilePage.Padding = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.cbBackupFilePage.Size = new System.Drawing.Size(399, 123);
+            this.cbBackupFilePage.Size = new System.Drawing.Size(399, 144);
             this.cbBackupFilePage.TabIndex = 9;
             this.cbBackupFilePage.TabStop = false;
             this.cbBackupFilePage.Text = "Các thao tác cho việc backup file";
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(278, 81);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(112, 21);
+            this.tbPassword.TabIndex = 7;
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.Location = new System.Drawing.Point(143, 81);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(129, 21);
+            this.tbUsername.TabIndex = 6;
+            // 
+            // lbUserPass
+            // 
+            this.lbUserPass.AutoSize = true;
+            this.lbUserPass.Location = new System.Drawing.Point(5, 86);
+            this.lbUserPass.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lbUserPass.Name = "lbUserPass";
+            this.lbUserPass.Size = new System.Drawing.Size(56, 16);
+            this.lbUserPass.TabIndex = 4;
+            this.lbUserPass.Text = "User:Pass";
             // 
             // btCopyListPage
             // 
@@ -403,7 +433,7 @@
             this.pbOptions.Controls.Add(this.gbListPage);
             this.pbOptions.Location = new System.Drawing.Point(10, 66);
             this.pbOptions.Name = "pbOptions";
-            this.pbOptions.Size = new System.Drawing.Size(999, 283);
+            this.pbOptions.Size = new System.Drawing.Size(999, 262);
             this.pbOptions.TabIndex = 16;
             // 
             // UC_Step1
@@ -463,5 +493,8 @@
         public System.Windows.Forms.Button btSendPageMail;
         public System.Windows.Forms.Button btCopyListPage;
         public System.Windows.Forms.Button btRewriteFilePage;
+        private System.Windows.Forms.TextBox tbPassword;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.Label lbUserPass;
     }
 }

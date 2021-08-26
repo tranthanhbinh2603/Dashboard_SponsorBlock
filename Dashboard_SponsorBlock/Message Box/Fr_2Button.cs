@@ -8,5 +8,10 @@ namespace Dashboard_SponsorBlock.Message_Box
         {
             InitializeComponent();
         }
+
+        private void bt2_Click(object sender, System.EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

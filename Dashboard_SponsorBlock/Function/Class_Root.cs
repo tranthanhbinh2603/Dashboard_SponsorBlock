@@ -44,6 +44,22 @@ namespace Dashboard_SponsorBlock.Function
             return res;
         }
 
+        public static void MessageBox1Button(System.Drawing.Color bcolortitle, System.Drawing.Color fcolortitle, System.Drawing.Color fcolorcontent, System.Drawing.Color bcolorbt, string title, string content, string textbt)
+        {
+            Fr_1Button fr = new Fr_1Button();
+            fr.panelTitle.BackColor = bcolortitle;
+            fr.lbTitle.ForeColor = fcolortitle;
+            fr.lbTitle.Text = title;
+
+            fr.lbContent.ForeColor = fcolorcontent;
+            fr.lbContent.Text = content;
+
+            fr.bt1.BackColor = bcolorbt;
+            fr.bt1.Text = textbt;
+
+            fr.ShowDialog();
+        }
+
         public static void MessageBox2Button(System.Drawing.Color bcolortitle, System.Drawing.Color fcolortitle, System.Drawing.Color fcolorcontent, System.Drawing.Color bcolorbt, string title, string content, string textbt1, string textbt2)
         {
             Fr_2Button fr = new Fr_2Button();

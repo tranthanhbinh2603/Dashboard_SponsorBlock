@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnContent = new System.Windows.Forms.Panel();
             this.lbContent = new System.Windows.Forms.Label();
             this.bt1 = new System.Windows.Forms.Button();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panelTitle = new Guna.UI2.WinForms.Guna2Panel();
             this.pnButton = new System.Windows.Forms.Panel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.pnContent.SuspendLayout();
             this.panelTitle.SuspendLayout();
             this.pnButton.SuspendLayout();
@@ -100,6 +102,10 @@
             this.pnButton.Size = new System.Drawing.Size(437, 38);
             this.pnButton.TabIndex = 4;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this;
+            // 
             // Fr_1Button
             // 
             this.AllowDrop = true;
@@ -130,5 +136,6 @@
         public System.Windows.Forms.Label lbTitle;
         public Guna.UI2.WinForms.Guna2Panel panelTitle;
         public System.Windows.Forms.Panel pnButton;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

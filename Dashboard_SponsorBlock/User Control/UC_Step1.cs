@@ -39,6 +39,21 @@ namespace Dashboard_SponsorBlock.User_Control
             btPasteClipboard.Enabled = true;
             btImportFile.Enabled = true;
             btRewriteFilePage.Enabled = true;
+
+            tbPassword.PasswordChar = '*';
+
+            //Đọc dữ liệu từ trong file acc.txt
+            if (Class_Root.CheckFile(tbPathOutput.Text + @"\Acc.txt"))
+            {
+                StreamReader streread = new StreamReader(tbPathOutput.Text + @"\Acc.txt");
+                string[] acc = streread.ReadToEnd().Split(':');
+                tbUsername.Text = acc[0];
+                tbPassword.Text = acc[1];
+                if (acc.Length == 3)
+                {
+                    tbMailSendPage.Text = acc[2];
+                }
+            }
         }
 
         void RunningPage(List<String> page, int[]pc)
@@ -398,7 +413,7 @@ namespace Dashboard_SponsorBlock.User_Control
 
             #region Thực thi lấy toàn bộ UUID cho tất cả các video
             #region Thiết lập cơ bản
-            int countThread = 7;
+            int countThread = 4;
             List<bool?> list = new List<bool?>(countThread);
             for (int i = 0; i < countThread; i++)
             {
@@ -449,67 +464,75 @@ namespace Dashboard_SponsorBlock.User_Control
                 {
                     if (i == 0)
                     {
-                        #region Thực thi lấy toàn bộ UUID
                         int copyi = i;
                         bool haveRes = false;
-                        for (int z = 0; z < pc2[copyi]; z++)
+                        Thread thr = new Thread(() => 
                         {
-                            haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z]);
-                            if (haveRes == true)
+                            #region Thực thi lấy toàn bộ UUID                            
+                            for (int z = 0; z < pc2[copyi]; z++)
                             {
-                                Invoke((Action)(() =>
+                                haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z]);
+                                if (haveRes == true)
                                 {
-                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoWithSBlock.txt", true))
+                                    Invoke((Action)(() =>
                                     {
-                                        sw.WriteLine("{0}", AllInfoVideo[z]);
-                                    }
-                                }));
-                            }
-                            else
-                            {
-                                Invoke((Action)(() =>
+                                        using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoWithSBlock.txt", true))
+                                        {
+                                            sw.WriteLine("{0}", AllInfoVideo[z]);
+                                        }
+                                    }));
+                                }
+                                else
                                 {
-                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                                    Invoke((Action)(() =>
                                     {
-                                        sw.WriteLine("{0}", AllInfoVideo[z]);
-                                    }
-                                }));
+                                        using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                                        {
+                                            sw.WriteLine("{0}", AllInfoVideo[z]);
+                                        }
+                                    }));
+                                }
                             }
-                        }
-                        list[copyi] = null;
-                        #endregion
+                            list[copyi] = null;
+                            #endregion
+                        });
+                        thr.Start();
                     }
                     else
                     {
-                        #region Thực thi lấy toàn bộ UUID
                         int copyi = i;
                         bool haveRes = false;
-                        for (int z = pc2[copyi - 1]; z < pc2[copyi]; z++)
+                        Thread thr = new Thread(() =>
                         {
-                            haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z]);
-                            if (haveRes == true)
+                            #region Thực thi lấy toàn bộ UUID                           
+                            for (int z = pc2[copyi - 1]; z < pc2[copyi]; z++)
                             {
-                                Invoke((Action)(() =>
+                                haveRes = Class_Step1.Get_UUID_SBlock_In_Video(IDVideo[z]);
+                                if (haveRes == true)
                                 {
-                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoWithSBlock.txt", true))
+                                    Invoke((Action)(() =>
                                     {
-                                        sw.WriteLine("{0}", AllInfoVideo[z]);
-                                    }
-                                }));
-                            }
-                            else
-                            {
-                                Invoke((Action)(() =>
+                                        using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoWithSBlock.txt", true))
+                                        {
+                                            sw.WriteLine("{0}", AllInfoVideo[z]);
+                                        }
+                                    }));
+                                }
+                                else
                                 {
-                                    using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                                    Invoke((Action)(() =>
                                     {
-                                        sw.WriteLine("{0}", AllInfoVideo[z]);
-                                    }
-                                }));
+                                        using (StreamWriter sw = new StreamWriter(tbPathOutput.Text + @"\VideoNoSBlock.txt", true))
+                                        {
+                                            sw.WriteLine("{0}", AllInfoVideo[z]);
+                                        }
+                                    }));
+                                }
                             }
-                        }
-                        list[copyi] = null;
-                        #endregion
+                            list[copyi] = null;
+                            #endregion
+                        });
+                        thr.Start();
                     }
                 }
             }
@@ -533,7 +556,43 @@ namespace Dashboard_SponsorBlock.User_Control
             }
             #endregion
 
-            MessageBox.Show("Đã xong");
+            #region Mở khoá control lại
+            if (rbChooseCrawl.Checked == true)
+            {
+                Invoke((Action)(() =>
+                {
+                    tbPathOutput.Enabled = false;
+                    rtbListPage.Enabled = true;
+                    npdNumberThread.Enabled = true;
+                    btSaveAsFilePage.Enabled = true;
+                    btCopyListPage.Enabled = true;
+                    tbMailSendPage.Enabled = true;
+                    btSendPageMail.Enabled = true;
+                    btPasteClipboard.Enabled = true;
+                    btImportFile.Enabled = true;
+                    btRewriteFilePage.Enabled = true;
+                    rbChooseCrawl.Enabled = true;
+                    rbChooseImportListVideo.Enabled = true;
+                }));                
+            }
+            else
+            {
+                Invoke((Action)(() =>
+                {
+                    rtbListPage.Enabled = false;
+                    npdNumberThread.Enabled = false;
+                    btSaveAsFilePage.Enabled = false;
+                    btCopyListPage.Enabled = false;
+                    tbMailSendPage.Enabled = false;
+                    btSendPageMail.Enabled = false;
+                    btPasteClipboard.Enabled = false;
+                    btImportFile.Enabled = false;
+                    btRewriteFilePage.Enabled = false;
+                    rbChooseCrawl.Enabled = true;
+                    rbChooseImportListVideo.Enabled = true;
+                }));               
+            }
+            #endregion
         }
 
         private void btChoosePathOutput_Click(object sender, System.EventArgs e)
@@ -619,7 +678,28 @@ namespace Dashboard_SponsorBlock.User_Control
 
         private void btSendPageMail_Click(object sender, System.EventArgs e)
         {
-            Class_Root.SendMail("hoctap.tranthanhbinh@gmail.com", "tranthanhbinh", tbMailSendPage.Text, "Gửi dữ liệu backup các trang theo dõi", rtbListPage.Text);
+            try
+            {
+                Thread thr = new Thread(() =>
+                {
+                    string content = "";
+                    Invoke((Action)(() =>
+                    {
+                        content = rtbListPage.Text;
+                    }));
+                    Class_Root.SendMail(tbUsername.Text, tbPassword.Text, tbMailSendPage.Text, "Gửi dữ liệu backup các trang theo dõi", content);
+
+                    StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\Acc.txt");
+                    stream.WriteLine("{0}:{1}:{2}", tbUsername.Text, tbPassword.Text, tbMailSendPage.Text);
+                    stream.Close();
+                });
+                thr.Start();
+            }
+            catch (Exception)
+            {
+                Class_Root.MessageBox1Button(System.Drawing.Color.Red, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.Red, "Lỗi!", "Gửi mail lỗi.\nCó thể do lỗi trong đăng nhập hoặc 1 lí do khác.","OK");
+            }
+            
         }
 
         private void btRewriteFilePage_Click(object sender, EventArgs e)
@@ -639,8 +719,19 @@ namespace Dashboard_SponsorBlock.User_Control
             if (tbPathOutput.Text != "")
             {
                 #region Khoá toàn bộ control
-
+                rtbListPage.Enabled = false;
+                npdNumberThread.Enabled = false;
+                btSaveAsFilePage.Enabled = false;
+                btCopyListPage.Enabled = false;
+                tbMailSendPage.Enabled = false;
+                btSendPageMail.Enabled = false;
+                btPasteClipboard.Enabled = false;
+                btImportFile.Enabled = false;
+                btRewriteFilePage.Enabled = false;
+                rbChooseCrawl.Enabled = false;
+                rbChooseImportListVideo.Enabled = false;
                 #endregion
+
                 List<String> listdata = new List<string>();
                 int[] pc = new int[50];
                 if (rbChooseCrawl.Checked == true)
