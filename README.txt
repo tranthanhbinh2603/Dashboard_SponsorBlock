@@ -5,3 +5,4 @@ Step 1:
 - Xử lí trong MessageBox.
 - Sao lưu lại vị trí
 - Tự động mở bảng chọn ngay tại vị trí cũ
+- Thêm tính năng tự động dãn thread max trong phần mở thread Selenium

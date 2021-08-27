@@ -219,14 +219,14 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(278, 81);
+            this.tbPassword.Location = new System.Drawing.Point(276, 81);
             this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(112, 21);
+            this.tbPassword.Size = new System.Drawing.Size(114, 21);
             this.tbPassword.TabIndex = 7;
             // 
             // tbUsername
             // 
-            this.tbUsername.Location = new System.Drawing.Point(143, 81);
+            this.tbUsername.Location = new System.Drawing.Point(141, 81);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(129, 21);
             this.tbUsername.TabIndex = 6;

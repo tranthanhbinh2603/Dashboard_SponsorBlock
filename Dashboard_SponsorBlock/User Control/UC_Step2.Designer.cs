@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbPathOutFileDownload = new Guna.UI2.WinForms.Guna2TextBox();
@@ -44,14 +44,18 @@
             this.btAllVideo = new System.Windows.Forms.GroupBox();
             this.nmudCountThread = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.lbCountThread = new System.Windows.Forms.Label();
-            this.btDeleteVideo = new System.Windows.Forms.Button();
-            this.btRun = new System.Windows.Forms.Button();
-            this.btExit = new System.Windows.Forms.Button();
             this.dgvListVideo = new Guna.UI2.WinForms.Guna2DataGridView();
             this.dgvcIDvideo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcNameVideo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvNameChannel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btDeleteVideo = new System.Windows.Forms.Button();
+            this.btRun = new System.Windows.Forms.Button();
+            this.btExit = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbPathCompile = new Guna.UI2.WinForms.Guna2TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.btAllVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmudCountThread)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListVideo)).BeginInit();
@@ -119,14 +123,14 @@
             this.tbPathOutFileDownload.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbPathOutFileDownload.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbPathOutFileDownload.HoverState.Parent = this.tbPathOutFileDownload;
-            this.tbPathOutFileDownload.Location = new System.Drawing.Point(88, 50);
+            this.tbPathOutFileDownload.Location = new System.Drawing.Point(171, 50);
             this.tbPathOutFileDownload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPathOutFileDownload.Name = "tbPathOutFileDownload";
             this.tbPathOutFileDownload.PasswordChar = '\0';
             this.tbPathOutFileDownload.PlaceholderText = "";
             this.tbPathOutFileDownload.SelectedText = "";
             this.tbPathOutFileDownload.ShadowDecoration.Parent = this.tbPathOutFileDownload;
-            this.tbPathOutFileDownload.Size = new System.Drawing.Size(713, 28);
+            this.tbPathOutFileDownload.Size = new System.Drawing.Size(630, 28);
             this.tbPathOutFileDownload.TabIndex = 23;
             // 
             // tbPathFiletxt
@@ -143,14 +147,14 @@
             this.tbPathFiletxt.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tbPathFiletxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tbPathFiletxt.HoverState.Parent = this.tbPathFiletxt;
-            this.tbPathFiletxt.Location = new System.Drawing.Point(88, 2);
+            this.tbPathFiletxt.Location = new System.Drawing.Point(171, 2);
             this.tbPathFiletxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPathFiletxt.Name = "tbPathFiletxt";
             this.tbPathFiletxt.PasswordChar = '\0';
             this.tbPathFiletxt.PlaceholderText = "";
             this.tbPathFiletxt.SelectedText = "";
             this.tbPathFiletxt.ShadowDecoration.Parent = this.tbPathFiletxt;
-            this.tbPathFiletxt.Size = new System.Drawing.Size(713, 32);
+            this.tbPathFiletxt.Size = new System.Drawing.Size(630, 32);
             this.tbPathFiletxt.TabIndex = 22;
             // 
             // lbOutFileDownload
@@ -220,11 +224,11 @@
             this.btAllVideo.Controls.Add(this.lbCountThread);
             this.btAllVideo.Controls.Add(this.dgvListVideo);
             this.btAllVideo.Controls.Add(this.btDeleteVideo);
-            this.btAllVideo.Location = new System.Drawing.Point(-9, 86);
+            this.btAllVideo.Location = new System.Drawing.Point(-9, 127);
             this.btAllVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btAllVideo.Name = "btAllVideo";
             this.btAllVideo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btAllVideo.Size = new System.Drawing.Size(1018, 369);
+            this.btAllVideo.Size = new System.Drawing.Size(1018, 328);
             this.btAllVideo.TabIndex = 8;
             this.btAllVideo.TabStop = false;
             this.btAllVideo.Text = "Danh sách video";
@@ -243,7 +247,7 @@
             this.nmudCountThread.FocusedState.Parent = this.nmudCountThread;
             this.nmudCountThread.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nmudCountThread.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.nmudCountThread.Location = new System.Drawing.Point(940, 319);
+            this.nmudCountThread.Location = new System.Drawing.Point(940, 278);
             this.nmudCountThread.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.nmudCountThread.Maximum = new decimal(new int[] {
             50,
@@ -268,59 +272,29 @@
             // lbCountThread
             // 
             this.lbCountThread.AutoSize = true;
-            this.lbCountThread.Location = new System.Drawing.Point(877, 334);
+            this.lbCountThread.Location = new System.Drawing.Point(877, 293);
             this.lbCountThread.Name = "lbCountThread";
             this.lbCountThread.Size = new System.Drawing.Size(57, 16);
             this.lbCountThread.TabIndex = 6;
             this.lbCountThread.Text = "Số luồng:";
             // 
-            // btDeleteVideo
-            // 
-            this.btDeleteVideo.Location = new System.Drawing.Point(784, 328);
-            this.btDeleteVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btDeleteVideo.Name = "btDeleteVideo";
-            this.btDeleteVideo.Size = new System.Drawing.Size(87, 28);
-            this.btDeleteVideo.TabIndex = 10;
-            this.btDeleteVideo.Text = "Xoá video";
-            this.btDeleteVideo.UseVisualStyleBackColor = true;
-            // 
-            // btRun
-            // 
-            this.btRun.Location = new System.Drawing.Point(823, 463);
-            this.btRun.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btRun.Name = "btRun";
-            this.btRun.Size = new System.Drawing.Size(87, 28);
-            this.btRun.TabIndex = 11;
-            this.btRun.Text = "Chạy";
-            this.btRun.UseVisualStyleBackColor = true;
-            // 
-            // btExit
-            // 
-            this.btExit.Location = new System.Drawing.Point(916, 463);
-            this.btExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btExit.Name = "btExit";
-            this.btExit.Size = new System.Drawing.Size(87, 28);
-            this.btExit.TabIndex = 11;
-            this.btExit.Text = "Thoát";
-            this.btExit.UseVisualStyleBackColor = true;
-            // 
             // dgvListVideo
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
-            this.dgvListVideo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
+            this.dgvListVideo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListVideo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListVideo.BackgroundColor = System.Drawing.Color.White;
             this.dgvListVideo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListVideo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListVideo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListVideo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListVideo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListVideo.ColumnHeadersHeight = 21;
             this.dgvListVideo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvListVideo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -328,24 +302,23 @@
             this.dgvcNameVideo,
             this.dgvNameChannel,
             this.dgvcTime});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(219)))), ((int)(((byte)(216)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(135)))), ((int)(((byte)(125)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListVideo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(219)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(135)))), ((int)(((byte)(125)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListVideo.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListVideo.EnableHeadersVisualStyles = false;
             this.dgvListVideo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(192)))), ((int)(((byte)(188)))));
             this.dgvListVideo.Location = new System.Drawing.Point(22, 22);
             this.dgvListVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvListVideo.Name = "dgvListVideo";
             this.dgvListVideo.RowHeadersVisible = false;
-            this.dgvListVideo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvListVideo.RowTemplate.Height = 21;
+            this.dgvListVideo.RowTemplate.Height = 28;
             this.dgvListVideo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListVideo.Size = new System.Drawing.Size(990, 289);
+            this.dgvListVideo.Size = new System.Drawing.Size(990, 250);
             this.dgvListVideo.TabIndex = 9;
             this.dgvListVideo.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Alizarin;
             this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
@@ -366,14 +339,14 @@
             this.dgvListVideo.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListVideo.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dgvListVideo.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvListVideo.ThemeStyle.RowsStyle.Height = 21;
+            this.dgvListVideo.ThemeStyle.RowsStyle.Height = 28;
             this.dgvListVideo.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(135)))), ((int)(((byte)(125)))));
             this.dgvListVideo.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvListVideo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListVideo_CellContentClick);
             // 
             // dgvcIDvideo
             // 
-            this.dgvcIDvideo.FillWeight = 57.39946F;
+            this.dgvcIDvideo.FillWeight = 45.91957F;
             this.dgvcIDvideo.HeaderText = "ID Video";
             this.dgvcIDvideo.MinimumWidth = 50;
             this.dgvcIDvideo.Name = "dgvcIDvideo";
@@ -391,17 +364,105 @@
             // 
             // dgvNameChannel
             // 
-            this.dgvNameChannel.FillWeight = 86.68952F;
+            this.dgvNameChannel.FillWeight = 92.66811F;
             this.dgvNameChannel.HeaderText = "Tên kênh";
             this.dgvNameChannel.Name = "dgvNameChannel";
             this.dgvNameChannel.ReadOnly = true;
             // 
             // dgvcTime
             // 
-            this.dgvcTime.FillWeight = 79.76889F;
+            this.dgvcTime.FillWeight = 85.2702F;
             this.dgvcTime.HeaderText = "Thời gian";
             this.dgvcTime.Name = "dgvcTime";
             this.dgvcTime.ReadOnly = true;
+            // 
+            // btDeleteVideo
+            // 
+            this.btDeleteVideo.Location = new System.Drawing.Point(784, 287);
+            this.btDeleteVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btDeleteVideo.Name = "btDeleteVideo";
+            this.btDeleteVideo.Size = new System.Drawing.Size(87, 28);
+            this.btDeleteVideo.TabIndex = 10;
+            this.btDeleteVideo.Text = "Xoá video";
+            this.btDeleteVideo.UseVisualStyleBackColor = true;
+            this.btDeleteVideo.Click += new System.EventHandler(this.btDeleteVideo_Click);
+            // 
+            // btRun
+            // 
+            this.btRun.Location = new System.Drawing.Point(823, 463);
+            this.btRun.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btRun.Name = "btRun";
+            this.btRun.Size = new System.Drawing.Size(87, 28);
+            this.btRun.TabIndex = 11;
+            this.btRun.Text = "Chạy";
+            this.btRun.UseVisualStyleBackColor = true;
+            this.btRun.Click += new System.EventHandler(this.btRun_Click);
+            // 
+            // btExit
+            // 
+            this.btExit.Location = new System.Drawing.Point(916, 463);
+            this.btExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btExit.Name = "btExit";
+            this.btExit.Size = new System.Drawing.Size(87, 28);
+            this.btExit.TabIndex = 11;
+            this.btExit.Text = "Thoát";
+            this.btExit.UseVisualStyleBackColor = true;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(805, 86);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 28);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Choose...";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btGetOutFileDownload_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(166, 16);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Địa chỉ lưu biên dịch Python:";
+            // 
+            // tbPathCompile
+            // 
+            this.tbPathCompile.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tbPathCompile.DefaultText = "";
+            this.tbPathCompile.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.tbPathCompile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.tbPathCompile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbPathCompile.DisabledState.Parent = this.tbPathCompile;
+            this.tbPathCompile.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.tbPathCompile.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPathCompile.FocusedState.Parent = this.tbPathCompile;
+            this.tbPathCompile.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tbPathCompile.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.tbPathCompile.HoverState.Parent = this.tbPathCompile;
+            this.tbPathCompile.Location = new System.Drawing.Point(171, 91);
+            this.tbPathCompile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbPathCompile.Name = "tbPathCompile";
+            this.tbPathCompile.PasswordChar = '\0';
+            this.tbPathCompile.PlaceholderText = "";
+            this.tbPathCompile.SelectedText = "";
+            this.tbPathCompile.ShadowDecoration.Parent = this.tbPathCompile;
+            this.tbPathCompile.Size = new System.Drawing.Size(630, 28);
+            this.tbPathCompile.TabIndex = 23;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(909, 86);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 28);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Cài Pytube";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btGetOutFileDownload_Click);
             // 
             // UC_Step2
             // 
@@ -409,9 +470,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.guna2TextBox5);
             this.Controls.Add(this.guna2TextBox4);
+            this.Controls.Add(this.tbPathCompile);
             this.Controls.Add(this.tbPathOutFileDownload);
             this.Controls.Add(this.tbPathFiletxt);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbOutFileDownload);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btGetOutFileDownload);
             this.Controls.Add(this.lbPathFileTxt);
             this.Controls.Add(this.btChooseFileListVideo);
@@ -456,5 +521,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNameVideo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNameChannel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcTime;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2TextBox tbPathCompile;
+        private System.Windows.Forms.Button button2;
     }
 }
