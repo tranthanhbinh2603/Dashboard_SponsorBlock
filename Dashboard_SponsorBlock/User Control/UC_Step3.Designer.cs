@@ -43,19 +43,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tbPathTimeVideo = new Guna.UI2.WinForms.Guna2TextBox();
             this.gbInfoVideo = new System.Windows.Forms.GroupBox();
-            this.cbAllVideo = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.cbExportImage = new Guna.UI2.WinForms.Guna2CheckBox();
             this.btExit = new System.Windows.Forms.Button();
-            this.btDeleteVideo = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
             this.btRun = new System.Windows.Forms.Button();
             this.lbScanChoose = new System.Windows.Forms.Label();
             this.lbTextNameVideo = new System.Windows.Forms.Label();
             this.btGetPathVideo = new System.Windows.Forms.Button();
             this.gbListVideo = new System.Windows.Forms.GroupBox();
             this.dgvListVideo = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcNameVideo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcExportImage = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvcScanAllVideo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvcPathTimeVideo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPathVideo = new Guna.UI2.WinForms.Guna2TextBox();
             this.tbOutput = new Guna.UI2.WinForms.Guna2TextBox();
             this.btInstallLib = new System.Windows.Forms.Button();
@@ -136,7 +136,7 @@
             // lbNameVideo
             // 
             this.lbNameVideo.AutoSize = true;
-            this.lbNameVideo.Location = new System.Drawing.Point(83, 33);
+            this.lbNameVideo.Location = new System.Drawing.Point(90, 21);
             this.lbNameVideo.Name = "lbNameVideo";
             this.lbNameVideo.Size = new System.Drawing.Size(0, 17);
             this.lbNameVideo.TabIndex = 8;
@@ -169,7 +169,7 @@
             this.panel1.Controls.Add(this.rbNotAllVideo);
             this.panel1.Controls.Add(this.rbAllVideo);
             this.panel1.Controls.Add(this.lbPathTimeVideo);
-            this.panel1.Location = new System.Drawing.Point(20, 59);
+            this.panel1.Location = new System.Drawing.Point(17, 68);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(973, 70);
@@ -201,10 +201,10 @@
             // 
             // gbInfoVideo
             // 
-            this.gbInfoVideo.Controls.Add(this.cbAllVideo);
+            this.gbInfoVideo.Controls.Add(this.cbExportImage);
             this.gbInfoVideo.Controls.Add(this.btExit);
             this.gbInfoVideo.Controls.Add(this.lbNameVideo);
-            this.gbInfoVideo.Controls.Add(this.btDeleteVideo);
+            this.gbInfoVideo.Controls.Add(this.btDelete);
             this.gbInfoVideo.Controls.Add(this.btRun);
             this.gbInfoVideo.Controls.Add(this.btSave);
             this.gbInfoVideo.Controls.Add(this.panel1);
@@ -220,27 +220,27 @@
             this.gbInfoVideo.TabStop = false;
             this.gbInfoVideo.Text = "Thông tin về video";
             // 
-            // cbAllVideo
+            // cbExportImage
             // 
-            this.cbAllVideo.AutoSize = true;
-            this.cbAllVideo.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbAllVideo.CheckedState.BorderRadius = 2;
-            this.cbAllVideo.CheckedState.BorderThickness = 0;
-            this.cbAllVideo.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbAllVideo.Location = new System.Drawing.Point(703, 17);
-            this.cbAllVideo.Name = "cbAllVideo";
-            this.cbAllVideo.Size = new System.Drawing.Size(104, 21);
-            this.cbAllVideo.TabIndex = 9;
-            this.cbAllVideo.Text = "Xuất hình ảnh";
-            this.cbAllVideo.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.cbAllVideo.UncheckedState.BorderRadius = 2;
-            this.cbAllVideo.UncheckedState.BorderThickness = 0;
-            this.cbAllVideo.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.cbAllVideo.UseVisualStyleBackColor = true;
+            this.cbExportImage.AutoSize = true;
+            this.cbExportImage.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbExportImage.CheckedState.BorderRadius = 2;
+            this.cbExportImage.CheckedState.BorderThickness = 0;
+            this.cbExportImage.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbExportImage.Location = new System.Drawing.Point(703, 17);
+            this.cbExportImage.Name = "cbExportImage";
+            this.cbExportImage.Size = new System.Drawing.Size(104, 21);
+            this.cbExportImage.TabIndex = 9;
+            this.cbExportImage.Text = "Xuất hình ảnh";
+            this.cbExportImage.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.cbExportImage.UncheckedState.BorderRadius = 2;
+            this.cbExportImage.UncheckedState.BorderThickness = 0;
+            this.cbExportImage.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.cbExportImage.UseVisualStyleBackColor = true;
             // 
             // btExit
             // 
-            this.btExit.Location = new System.Drawing.Point(903, 137);
+            this.btExit.Location = new System.Drawing.Point(903, 145);
             this.btExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btExit.Name = "btExit";
             this.btExit.Size = new System.Drawing.Size(87, 28);
@@ -248,20 +248,21 @@
             this.btExit.Text = "Thoát";
             this.btExit.UseVisualStyleBackColor = true;
             // 
-            // btDeleteVideo
+            // btDelete
             // 
-            this.btDeleteVideo.Location = new System.Drawing.Point(813, 12);
-            this.btDeleteVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btDeleteVideo.Name = "btDeleteVideo";
-            this.btDeleteVideo.Size = new System.Drawing.Size(87, 28);
-            this.btDeleteVideo.TabIndex = 5;
-            this.btDeleteVideo.Text = "Xoá";
-            this.btDeleteVideo.UseVisualStyleBackColor = true;
+            this.btDelete.Location = new System.Drawing.Point(813, 12);
+            this.btDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(87, 28);
+            this.btDelete.TabIndex = 5;
+            this.btDelete.Text = "Xoá";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // btRun
             // 
             this.btRun.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRun.Location = new System.Drawing.Point(813, 138);
+            this.btRun.Location = new System.Drawing.Point(811, 146);
             this.btRun.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btRun.Name = "btRun";
             this.btRun.Size = new System.Drawing.Size(89, 28);
@@ -272,7 +273,7 @@
             // lbScanChoose
             // 
             this.lbScanChoose.AutoSize = true;
-            this.lbScanChoose.Location = new System.Drawing.Point(11, 38);
+            this.lbScanChoose.Location = new System.Drawing.Point(11, 47);
             this.lbScanChoose.Name = "lbScanChoose";
             this.lbScanChoose.Size = new System.Drawing.Size(80, 17);
             this.lbScanChoose.TabIndex = 4;
@@ -314,7 +315,7 @@
             // 
             // dgvListVideo
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
             this.dgvListVideo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListVideo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListVideo.BackgroundColor = System.Drawing.Color.White;
@@ -322,86 +323,92 @@
             this.dgvListVideo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListVideo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvListVideo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvListVideo.ColumnHeadersHeight = 17;
+            this.dgvListVideo.ColumnHeadersHeight = 21;
             this.dgvListVideo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
+            this.dgvcNameVideo,
+            this.dgvcExportImage,
+            this.dgvcScanAllVideo,
+            this.dgvcPathTimeVideo});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(219)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(135)))), ((int)(((byte)(125)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListVideo.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListVideo.EnableHeadersVisualStyles = false;
-            this.dgvListVideo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListVideo.Location = new System.Drawing.Point(17, 27);
+            this.dgvListVideo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(192)))), ((int)(((byte)(188)))));
+            this.dgvListVideo.Location = new System.Drawing.Point(17, 22);
             this.dgvListVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvListVideo.Name = "dgvListVideo";
             this.dgvListVideo.RowHeadersVisible = false;
+            this.dgvListVideo.RowHeadersWidth = 21;
             this.dgvListVideo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListVideo.Size = new System.Drawing.Size(983, 153);
+            this.dgvListVideo.Size = new System.Drawing.Size(983, 158);
             this.dgvListVideo.TabIndex = 1;
-            this.dgvListVideo.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
-            this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvListVideo.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Alizarin;
+            this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(201)))), ((int)(((byte)(197)))));
             this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.Font = null;
             this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
             this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
             this.dgvListVideo.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgvListVideo.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvListVideo.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListVideo.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvListVideo.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(192)))), ((int)(((byte)(188)))));
+            this.dgvListVideo.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
             this.dgvListVideo.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvListVideo.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvListVideo.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvListVideo.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvListVideo.ThemeStyle.HeaderStyle.Height = 17;
+            this.dgvListVideo.ThemeStyle.HeaderStyle.Height = 21;
             this.dgvListVideo.ThemeStyle.ReadOnly = false;
-            this.dgvListVideo.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvListVideo.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(219)))), ((int)(((byte)(216)))));
             this.dgvListVideo.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListVideo.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListVideo.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvListVideo.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvListVideo.ThemeStyle.RowsStyle.Height = 22;
-            this.dgvListVideo.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvListVideo.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvListVideo.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(135)))), ((int)(((byte)(125)))));
+            this.dgvListVideo.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvListVideo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListVideo_CellClick);
             // 
-            // Column1
+            // dgvcNameVideo
             // 
-            this.Column1.HeaderText = "Tên video";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.dgvcNameVideo.FillWeight = 59.69167F;
+            this.dgvcNameVideo.HeaderText = "Tên video";
+            this.dgvcNameVideo.Name = "dgvcNameVideo";
+            this.dgvcNameVideo.ReadOnly = true;
             // 
-            // Column2
+            // dgvcExportImage
             // 
-            this.Column2.HeaderText = "Xuất ra hình ảnh";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvcExportImage.FillWeight = 49.54039F;
+            this.dgvcExportImage.HeaderText = "Xuất ra hình ảnh";
+            this.dgvcExportImage.Name = "dgvcExportImage";
+            this.dgvcExportImage.ReadOnly = true;
+            this.dgvcExportImage.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcExportImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // Column3
+            // dgvcScanAllVideo
             // 
-            this.Column3.HeaderText = "Quét toàn bộ video";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvcScanAllVideo.FillWeight = 52.89929F;
+            this.dgvcScanAllVideo.HeaderText = "Quét toàn bộ video";
+            this.dgvcScanAllVideo.Name = "dgvcScanAllVideo";
+            this.dgvcScanAllVideo.ReadOnly = true;
+            this.dgvcScanAllVideo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcScanAllVideo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // Column4
+            // dgvcPathTimeVideo
             // 
-            this.Column4.HeaderText = "Địa chỉ file chứa các mốc thời gian";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.dgvcPathTimeVideo.FillWeight = 237.8686F;
+            this.dgvcPathTimeVideo.HeaderText = "Địa chỉ file chứa các mốc thời gian";
+            this.dgvcPathTimeVideo.Name = "dgvcPathTimeVideo";
+            this.dgvcPathTimeVideo.ReadOnly = true;
             // 
             // tbPathVideo
             // 
@@ -494,6 +501,7 @@
             this.btRefreshVideo.TabIndex = 18;
             this.btRefreshVideo.Text = "Refresh";
             this.btRefreshVideo.UseVisualStyleBackColor = true;
+            this.btRefreshVideo.Click += new System.EventHandler(this.btRefreshVideo_Click);
             // 
             // UC_Step3
             // 
@@ -542,21 +550,21 @@
         private System.Windows.Forms.Label lbTextNameVideo;
         private System.Windows.Forms.Button btGetPathVideo;
         private System.Windows.Forms.GroupBox gbListVideo;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvListVideo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNameVideo;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcExportImage;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcScanAllVideo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcPathTimeVideo;
         private Guna.UI2.WinForms.Guna2TextBox tbPathVideo;
         private Guna.UI2.WinForms.Guna2TextBox tbOutput;
         private Guna.UI2.WinForms.Guna2TextBox tbPathTimeVideo;
-        private System.Windows.Forms.Button btDeleteVideo;
+        private System.Windows.Forms.Button btDelete;
         private System.Windows.Forms.Button btInstallLib;
         private System.Windows.Forms.Button btRun;
-        private Guna.UI2.WinForms.Guna2CheckBox cbAllVideo;
+        private Guna.UI2.WinForms.Guna2CheckBox cbExportImage;
         private System.Windows.Forms.Button btInstallPythonWin7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btExit;
         private System.Windows.Forms.Button btRefreshVideo;
+        internal Guna.UI2.WinForms.Guna2DataGridView dgvListVideo;
     }
 }

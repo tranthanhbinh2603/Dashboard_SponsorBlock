@@ -1,6 +1,7 @@
 All: 
 - Thêm file Help để hướng dẫn
 - Clean sau khi code xong
+- Thêm file Config.txt. Tự động sao lưu lại
 
 
 Step 1:

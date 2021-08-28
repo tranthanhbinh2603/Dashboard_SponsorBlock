@@ -204,11 +204,6 @@ namespace Dashboard_SponsorBlock.User_Control
             #endregion
         }
 
-        private void dgvListVideo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btDeleteVideo.Enabled = true;
-        }
-
         private void btExit_Click(object sender, System.EventArgs e)
         {
             Application.Exit();
@@ -284,6 +279,11 @@ namespace Dashboard_SponsorBlock.User_Control
         private void btInstallPytube_Click(object sender, System.EventArgs e)
         {
             Process.Start("CMD.exe", "/C" + "pip install pytube");
+        }
+
+        private void dgvListVideo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btDeleteVideo.Enabled = true;
         }
     }
 }

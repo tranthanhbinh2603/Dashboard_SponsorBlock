@@ -342,7 +342,7 @@
             this.dgvListVideo.ThemeStyle.RowsStyle.Height = 28;
             this.dgvListVideo.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(135)))), ((int)(((byte)(125)))));
             this.dgvListVideo.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvListVideo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListVideo_CellContentClick);
+            this.dgvListVideo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListVideo_CellClick);
             // 
             // dgvcIDvideo
             // 
