@@ -573,6 +573,8 @@ namespace Dashboard_SponsorBlock.User_Control
                     btRewriteFilePage.Enabled = true;
                     rbChooseCrawl.Enabled = true;
                     rbChooseImportListVideo.Enabled = true;
+                    tbPassword.Enabled = true;
+                    tbUsername.Enabled = true;
                 }));                
             }
             else
@@ -590,6 +592,8 @@ namespace Dashboard_SponsorBlock.User_Control
                     btRewriteFilePage.Enabled = false;
                     rbChooseCrawl.Enabled = true;
                     rbChooseImportListVideo.Enabled = true;
+                    tbPassword.Enabled = false;
+                    tbUsername.Enabled = false;
                 }));               
             }
             #endregion
@@ -630,6 +634,8 @@ namespace Dashboard_SponsorBlock.User_Control
             btPasteClipboard.Enabled = true;
             btImportFile.Enabled = true;
             btRewriteFilePage.Enabled = true;
+            tbPassword.Enabled = true;
+            tbUsername.Enabled = true;
         }
 
         private void rbChooseImportListVideo_CheckedChanged(object sender, System.EventArgs e)
@@ -643,6 +649,8 @@ namespace Dashboard_SponsorBlock.User_Control
             btPasteClipboard.Enabled = false;
             btImportFile.Enabled = false;
             btRewriteFilePage.Enabled = false;
+            tbUsername.Enabled = false;
+            tbPassword.Enabled = false;
         }
 
         private void btCopyListPage_Click(object sender, System.EventArgs e)
@@ -730,6 +738,8 @@ namespace Dashboard_SponsorBlock.User_Control
                 btRewriteFilePage.Enabled = false;
                 rbChooseCrawl.Enabled = false;
                 rbChooseImportListVideo.Enabled = false;
+                tbPassword.Enabled = false;
+                tbUsername.Enabled = false;
                 #endregion
 
                 List<String> listdata = new List<string>();

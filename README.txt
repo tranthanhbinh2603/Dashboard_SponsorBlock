@@ -12,6 +12,8 @@ Step 1:
 - Sao lưu lại vị trí
 - Tự động mở bảng chọn ngay tại vị trí cũ
 - Thêm tính năng tự động dãn thread max trong phần mở thread Selenium
+- Disable control button chọn mục
 
 Step 2:
 - Có thông báo riêng sau khi làm xong (Chưa làm)
+- Disable toàn bộ control khi đang chạy code (kể cả button chọn mục)

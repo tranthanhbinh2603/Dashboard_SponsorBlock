@@ -38,7 +38,7 @@
             this.btPasteUserID = new System.Windows.Forms.Button();
             this.btChooseFileAllOptions = new System.Windows.Forms.Button();
             this.btChooseFileUserID = new System.Windows.Forms.Button();
-            this.tbAllVideo = new System.Windows.Forms.TextBox();
+            this.tbAllSettingSBlock = new System.Windows.Forms.TextBox();
             this.tbUserID = new System.Windows.Forms.TextBox();
             this.tbPathSelenium = new System.Windows.Forms.TextBox();
             this.btChooseFolderSelenium = new System.Windows.Forms.Button();
@@ -114,6 +114,7 @@
             this.btRunSetupSelenium.TabIndex = 10;
             this.btRunSetupSelenium.Text = "Thực thi cài đặt Profile";
             this.btRunSetupSelenium.UseVisualStyleBackColor = true;
+            this.btRunSetupSelenium.Click += new System.EventHandler(this.btRunSetupSelenium_Click);
             // 
             // lbChooseOptions
             // 
@@ -132,7 +133,7 @@
             this.pnOptionsImportSBSettings.Controls.Add(this.btPasteUserID);
             this.pnOptionsImportSBSettings.Controls.Add(this.btChooseFileAllOptions);
             this.pnOptionsImportSBSettings.Controls.Add(this.btChooseFileUserID);
-            this.pnOptionsImportSBSettings.Controls.Add(this.tbAllVideo);
+            this.pnOptionsImportSBSettings.Controls.Add(this.tbAllSettingSBlock);
             this.pnOptionsImportSBSettings.Controls.Add(this.tbUserID);
             this.pnOptionsImportSBSettings.Location = new System.Drawing.Point(25, 53);
             this.pnOptionsImportSBSettings.Name = "pnOptionsImportSBSettings";
@@ -149,6 +150,7 @@
             this.rbImportAllOptions.TabStop = true;
             this.rbImportAllOptions.Text = "Nhập toàn bộ cài đặt";
             this.rbImportAllOptions.UseVisualStyleBackColor = true;
+            this.rbImportAllOptions.CheckedChanged += new System.EventHandler(this.rbImportAllOptions_CheckedChanged);
             // 
             // rbOnlyUserID
             // 
@@ -160,6 +162,7 @@
             this.rbOnlyUserID.TabStop = true;
             this.rbOnlyUserID.Text = "Chỉ nhập mã ID bí mật";
             this.rbOnlyUserID.UseVisualStyleBackColor = true;
+            this.rbOnlyUserID.CheckedChanged += new System.EventHandler(this.rbOnlyUserID_CheckedChanged);
             // 
             // btPasteAllOptions
             // 
@@ -169,6 +172,7 @@
             this.btPasteAllOptions.TabIndex = 2;
             this.btPasteAllOptions.Text = "Paste từ Clipboard";
             this.btPasteAllOptions.UseVisualStyleBackColor = true;
+            this.btPasteAllOptions.Click += new System.EventHandler(this.btPasteAllOptions_Click);
             // 
             // btPasteUserID
             // 
@@ -178,6 +182,7 @@
             this.btPasteUserID.TabIndex = 2;
             this.btPasteUserID.Text = "Paste từ Clipboard";
             this.btPasteUserID.UseVisualStyleBackColor = true;
+            this.btPasteUserID.Click += new System.EventHandler(this.btPasteUserID_Click);
             // 
             // btChooseFileAllOptions
             // 
@@ -199,12 +204,12 @@
             this.btChooseFileUserID.UseVisualStyleBackColor = true;
             this.btChooseFileUserID.Click += new System.EventHandler(this.btChooseFileUserID_Click);
             // 
-            // tbAllVideo
+            // tbAllSettingSBlock
             // 
-            this.tbAllVideo.Location = new System.Drawing.Point(158, 27);
-            this.tbAllVideo.Name = "tbAllVideo";
-            this.tbAllVideo.Size = new System.Drawing.Size(575, 21);
-            this.tbAllVideo.TabIndex = 0;
+            this.tbAllSettingSBlock.Location = new System.Drawing.Point(158, 27);
+            this.tbAllSettingSBlock.Name = "tbAllSettingSBlock";
+            this.tbAllSettingSBlock.Size = new System.Drawing.Size(575, 21);
+            this.tbAllSettingSBlock.TabIndex = 0;
             // 
             // tbUserID
             // 
@@ -219,6 +224,7 @@
             this.tbPathSelenium.Name = "tbPathSelenium";
             this.tbPathSelenium.Size = new System.Drawing.Size(561, 21);
             this.tbPathSelenium.TabIndex = 6;
+            this.tbPathSelenium.Text = "D:\\Test Dashboard SponsorBlock\\Profile Sele";
             // 
             // btChooseFolderSelenium
             // 
@@ -668,7 +674,7 @@
         private System.Windows.Forms.Button btPasteUserID;
         private System.Windows.Forms.Button btChooseFileAllOptions;
         private System.Windows.Forms.Button btChooseFileUserID;
-        private System.Windows.Forms.TextBox tbAllVideo;
+        private System.Windows.Forms.TextBox tbAllSettingSBlock;
         private System.Windows.Forms.TextBox tbUserID;
         private System.Windows.Forms.TextBox tbPathSelenium;
         private System.Windows.Forms.Button btChooseFolderSelenium;
