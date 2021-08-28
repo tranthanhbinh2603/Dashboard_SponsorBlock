@@ -1,6 +1,8 @@
 ﻿using Dashboard_SponsorBlock.Function;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Dashboard_SponsorBlock.User_Control
@@ -8,6 +10,59 @@ namespace Dashboard_SponsorBlock.User_Control
     public partial class UC_Step2 : UserControl
     {
         List<VideoInfo> listVideo = new List<VideoInfo>();
+
+        public void Download(int countThread)
+        {
+            bool[] running = new bool[50];
+            for (int i = 0; i < countThread; i++)
+            {
+                running[i] = true;
+            }
+
+            for (int i = 0; i < countThread; i++)
+            {
+                if (i == 0)
+                {
+                    int copyi = i;
+                    string pathPyCode = Application.StartupPath + @"\Thread" + (copyi + 1) + ".py";
+                    string pathPyCompile = tbPathCompile.Text + @"\python.exe";
+                    Thread thr = new Thread(() =>
+                    {
+                        running[copyi] = Class_Step2.RunPyCode(pathPyCode, pathPyCompile);
+                    });
+                    thr.Start();
+                }
+                else
+                {
+                    int copyi = i;
+                    string pathPyCode = Application.StartupPath + @"\Thread" + (copyi + 1) + ".py";
+                    string pathPyCompile = tbPathCompile.Text + @"\python.exe";
+                    Thread thr = new Thread(() =>
+                    {
+                        running[copyi] = Class_Step2.RunPyCode(pathPyCode, pathPyCompile);
+                    });
+                    thr.Start();
+                }
+            }
+
+            bool nextStep = true;
+            while (nextStep)
+            {
+                int countOff = 0;
+                for (int i = 0; i < countThread; i++)
+                {
+                    if (running[i] == false)
+                    {
+                        countOff++;
+                    }
+                }
+
+                if (countOff == countThread)
+                {
+                    nextStep = false;
+                }
+            }
+        }
 
         public UC_Step2()
         {
@@ -209,32 +264,26 @@ namespace Dashboard_SponsorBlock.User_Control
             #endregion
 
             #region Thực thi tải về đa luồng
-            bool ending = true;
-
-            for (int i = 0; i < countThread; i++)
+            Thread thr = new Thread(() =>
             {
-                if (i == 0)
-                {
-                    for (int z = 0; z < pc[i]; z++)
-                    {
-
-                    }
-                }
-                else
-                {
-                    for (int z = pc[i - 1]; z < pc[i]; z++)
-                    {
-                    }
-                }
-            }
-
-            while (ending)
-            {
-
-            }
+                Download(countThread);
+            });
+            thr.IsBackground = true;
+            thr.Start();
             #endregion
 
-            MessageBox.Show("Done!");
+           
+        }
+
+        private void btGetPathCompile_Click(object sender, System.EventArgs e)
+        {
+            string path = Class_Root.ChooseFolder("Chọn thư mục chứa trình biên dịch Python");
+            tbPathCompile.Text = tbPathCompile.Text;
+        }
+
+        private void btInstallPytube_Click(object sender, System.EventArgs e)
+        {
+            Process.Start("CMD.exe", "/C" + "pip install pytube");
         }
     }
 }

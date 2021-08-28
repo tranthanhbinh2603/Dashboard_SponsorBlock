@@ -52,10 +52,10 @@
             this.btDeleteVideo = new System.Windows.Forms.Button();
             this.btRun = new System.Windows.Forms.Button();
             this.btExit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btGetPathCompile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPathCompile = new Guna.UI2.WinForms.Guna2TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btInstallPytube = new System.Windows.Forms.Button();
             this.btAllVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmudCountThread)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListVideo)).BeginInit();
@@ -409,16 +409,16 @@
             this.btExit.UseVisualStyleBackColor = true;
             this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
-            // button1
+            // btGetPathCompile
             // 
-            this.button1.Location = new System.Drawing.Point(805, 86);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Choose...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btGetOutFileDownload_Click);
+            this.btGetPathCompile.Location = new System.Drawing.Point(805, 86);
+            this.btGetPathCompile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btGetPathCompile.Name = "btGetPathCompile";
+            this.btGetPathCompile.Size = new System.Drawing.Size(100, 28);
+            this.btGetPathCompile.TabIndex = 15;
+            this.btGetPathCompile.Text = "Choose...";
+            this.btGetPathCompile.UseVisualStyleBackColor = true;
+            this.btGetPathCompile.Click += new System.EventHandler(this.btGetPathCompile_Click);
             // 
             // label1
             // 
@@ -453,16 +453,16 @@
             this.tbPathCompile.Size = new System.Drawing.Size(630, 28);
             this.tbPathCompile.TabIndex = 23;
             // 
-            // button2
+            // btInstallPytube
             // 
-            this.button2.Location = new System.Drawing.Point(909, 86);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 28);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Cài Pytube";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btGetOutFileDownload_Click);
+            this.btInstallPytube.Location = new System.Drawing.Point(909, 86);
+            this.btInstallPytube.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btInstallPytube.Name = "btInstallPytube";
+            this.btInstallPytube.Size = new System.Drawing.Size(94, 28);
+            this.btInstallPytube.TabIndex = 15;
+            this.btInstallPytube.Text = "Cài Pytube";
+            this.btInstallPytube.UseVisualStyleBackColor = true;
+            this.btInstallPytube.Click += new System.EventHandler(this.btInstallPytube_Click);
             // 
             // UC_Step2
             // 
@@ -475,8 +475,8 @@
             this.Controls.Add(this.tbPathFiletxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbOutFileDownload);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btInstallPytube);
+            this.Controls.Add(this.btGetPathCompile);
             this.Controls.Add(this.btGetOutFileDownload);
             this.Controls.Add(this.lbPathFileTxt);
             this.Controls.Add(this.btChooseFileListVideo);
@@ -521,9 +521,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcNameVideo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvNameChannel;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcTime;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btGetPathCompile;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox tbPathCompile;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btInstallPytube;
     }
 }

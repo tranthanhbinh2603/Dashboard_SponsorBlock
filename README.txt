@@ -1,3 +1,8 @@
+All: 
+- Thêm file Help để hướng dẫn
+- Clean sau khi code xong
+
+
 Step 1:
 - Cần thêm đoạn code xử lí ngoại lệ đầu vào
 - Xử lí việc dead toàn bộ page (Page kéo đến cuối mà vẫn bị đơ, làm đơ thread)
@@ -6,3 +11,6 @@ Step 1:
 - Sao lưu lại vị trí
 - Tự động mở bảng chọn ngay tại vị trí cũ
 - Thêm tính năng tự động dãn thread max trong phần mở thread Selenium
+
+Step 2:
+- Có thông báo riêng sau khi làm xong (Chưa làm)
