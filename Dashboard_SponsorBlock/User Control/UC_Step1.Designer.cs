@@ -36,15 +36,8 @@
             this.btImportFile = new System.Windows.Forms.Button();
             this.gbRestore = new System.Windows.Forms.GroupBox();
             this.btRewriteFilePage = new System.Windows.Forms.Button();
-            this.tbMailSendPage = new System.Windows.Forms.TextBox();
-            this.lbMailSendPage = new System.Windows.Forms.Label();
-            this.btSaveAsFilePage = new System.Windows.Forms.Button();
-            this.btSendPageMail = new System.Windows.Forms.Button();
             this.cbBackupFilePage = new System.Windows.Forms.GroupBox();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.tbUsername = new System.Windows.Forms.TextBox();
-            this.lbUserPass = new System.Windows.Forms.Label();
-            this.btCopyListPage = new System.Windows.Forms.Button();
+            this.btOpenFolder = new System.Windows.Forms.Button();
             this.lbPathFileOutput = new System.Windows.Forms.Label();
             this.tbPathOutput = new Guna.UI2.WinForms.Guna2TextBox();
             this.btChoosePathOutput = new System.Windows.Forms.Button();
@@ -158,56 +151,9 @@
             this.btRewriteFilePage.UseVisualStyleBackColor = true;
             this.btRewriteFilePage.Click += new System.EventHandler(this.btRewriteFilePage_Click);
             // 
-            // tbMailSendPage
-            // 
-            this.tbMailSendPage.Location = new System.Drawing.Point(141, 58);
-            this.tbMailSendPage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.tbMailSendPage.Name = "tbMailSendPage";
-            this.tbMailSendPage.Size = new System.Drawing.Size(249, 21);
-            this.tbMailSendPage.TabIndex = 5;
-            // 
-            // lbMailSendPage
-            // 
-            this.lbMailSendPage.AutoSize = true;
-            this.lbMailSendPage.Location = new System.Drawing.Point(5, 61);
-            this.lbMailSendPage.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lbMailSendPage.Name = "lbMailSendPage";
-            this.lbMailSendPage.Size = new System.Drawing.Size(134, 16);
-            this.lbMailSendPage.TabIndex = 4;
-            this.lbMailSendPage.Text = "Địa chỉ mail gửi dữ liệu:";
-            // 
-            // btSaveAsFilePage
-            // 
-            this.btSaveAsFilePage.Location = new System.Drawing.Point(7, 25);
-            this.btSaveAsFilePage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.btSaveAsFilePage.Name = "btSaveAsFilePage";
-            this.btSaveAsFilePage.Size = new System.Drawing.Size(189, 27);
-            this.btSaveAsFilePage.TabIndex = 3;
-            this.btSaveAsFilePage.Text = "Lưu file";
-            this.btSaveAsFilePage.UseVisualStyleBackColor = true;
-            this.btSaveAsFilePage.Click += new System.EventHandler(this.btSaveAsFilePage_Click);
-            // 
-            // btSendPageMail
-            // 
-            this.btSendPageMail.Location = new System.Drawing.Point(7, 107);
-            this.btSendPageMail.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.btSendPageMail.Name = "btSendPageMail";
-            this.btSendPageMail.Size = new System.Drawing.Size(385, 27);
-            this.btSendPageMail.TabIndex = 0;
-            this.btSendPageMail.Text = "Gửi mail chứa dữ liệu";
-            this.btSendPageMail.UseVisualStyleBackColor = true;
-            this.btSendPageMail.Click += new System.EventHandler(this.btSendPageMail_Click);
-            // 
             // cbBackupFilePage
             // 
-            this.cbBackupFilePage.Controls.Add(this.tbPassword);
-            this.cbBackupFilePage.Controls.Add(this.tbUsername);
-            this.cbBackupFilePage.Controls.Add(this.tbMailSendPage);
-            this.cbBackupFilePage.Controls.Add(this.lbUserPass);
-            this.cbBackupFilePage.Controls.Add(this.lbMailSendPage);
-            this.cbBackupFilePage.Controls.Add(this.btCopyListPage);
-            this.cbBackupFilePage.Controls.Add(this.btSaveAsFilePage);
-            this.cbBackupFilePage.Controls.Add(this.btSendPageMail);
+            this.cbBackupFilePage.Controls.Add(this.btOpenFolder);
             this.cbBackupFilePage.Location = new System.Drawing.Point(10, 336);
             this.cbBackupFilePage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
             this.cbBackupFilePage.Name = "cbBackupFilePage";
@@ -217,40 +163,16 @@
             this.cbBackupFilePage.TabStop = false;
             this.cbBackupFilePage.Text = "Các thao tác cho việc backup file";
             // 
-            // tbPassword
+            // btOpenFolder
             // 
-            this.tbPassword.Location = new System.Drawing.Point(276, 81);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(114, 21);
-            this.tbPassword.TabIndex = 7;
-            // 
-            // tbUsername
-            // 
-            this.tbUsername.Location = new System.Drawing.Point(141, 81);
-            this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(129, 21);
-            this.tbUsername.TabIndex = 6;
-            // 
-            // lbUserPass
-            // 
-            this.lbUserPass.AutoSize = true;
-            this.lbUserPass.Location = new System.Drawing.Point(5, 86);
-            this.lbUserPass.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
-            this.lbUserPass.Name = "lbUserPass";
-            this.lbUserPass.Size = new System.Drawing.Size(56, 16);
-            this.lbUserPass.TabIndex = 4;
-            this.lbUserPass.Text = "User:Pass";
-            // 
-            // btCopyListPage
-            // 
-            this.btCopyListPage.Location = new System.Drawing.Point(203, 25);
-            this.btCopyListPage.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
-            this.btCopyListPage.Name = "btCopyListPage";
-            this.btCopyListPage.Size = new System.Drawing.Size(189, 27);
-            this.btCopyListPage.TabIndex = 3;
-            this.btCopyListPage.Text = "Copy vào Clipboard";
-            this.btCopyListPage.UseVisualStyleBackColor = true;
-            this.btCopyListPage.Click += new System.EventHandler(this.btCopyListPage_Click);
+            this.btOpenFolder.Location = new System.Drawing.Point(19, 24);
+            this.btOpenFolder.Margin = new System.Windows.Forms.Padding(1, 5, 1, 5);
+            this.btOpenFolder.Name = "btOpenFolder";
+            this.btOpenFolder.Size = new System.Drawing.Size(378, 99);
+            this.btOpenFolder.TabIndex = 3;
+            this.btOpenFolder.Text = "Mở folder chứa thư mục kết quả";
+            this.btOpenFolder.UseVisualStyleBackColor = true;
+            this.btOpenFolder.Click += new System.EventHandler(this.btOpenFolder_Click);
             // 
             // lbPathFileOutput
             // 
@@ -455,7 +377,6 @@
             this.gbOtherEvent.ResumeLayout(false);
             this.gbRestore.ResumeLayout(false);
             this.cbBackupFilePage.ResumeLayout(false);
-            this.cbBackupFilePage.PerformLayout();
             this.gbListPage.ResumeLayout(false);
             this.gbListPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.npdNumberThread)).EndInit();
@@ -471,7 +392,6 @@
         private System.Windows.Forms.Button btRun;
         private System.Windows.Forms.Button btExit;
         private System.Windows.Forms.Button btHelp;
-        private System.Windows.Forms.Label lbMailSendPage;
         private System.Windows.Forms.Label lbPathFileOutput;
         private Guna.UI2.WinForms.Guna2TextBox tbPathOutput;
         private System.Windows.Forms.Button btChoosePathOutput;
@@ -488,13 +408,7 @@
         public System.Windows.Forms.GroupBox cbBackupFilePage;
         public System.Windows.Forms.Button btPasteClipboard;
         public System.Windows.Forms.Button btImportFile;
-        public System.Windows.Forms.TextBox tbMailSendPage;
-        public System.Windows.Forms.Button btSaveAsFilePage;
-        public System.Windows.Forms.Button btSendPageMail;
-        public System.Windows.Forms.Button btCopyListPage;
         public System.Windows.Forms.Button btRewriteFilePage;
-        private System.Windows.Forms.TextBox tbPassword;
-        private System.Windows.Forms.TextBox tbUsername;
-        private System.Windows.Forms.Label lbUserPass;
+        public System.Windows.Forms.Button btOpenFolder;
     }
 }

@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
@@ -32,28 +33,9 @@ namespace Dashboard_SponsorBlock.User_Control
             npdNumberThread.Enabled = true;
 
             //Bật backup and restore
-            btSaveAsFilePage.Enabled = true;
-            btCopyListPage.Enabled = true;
-            tbMailSendPage.Enabled = true;
-            btSendPageMail.Enabled = true;
             btPasteClipboard.Enabled = true;
             btImportFile.Enabled = true;
             btRewriteFilePage.Enabled = true;
-
-            tbPassword.PasswordChar = '*';
-
-            //Đọc dữ liệu từ trong file acc.txt
-            if (Class_Root.CheckFile(tbPathOutput.Text + @"\Acc.txt"))
-            {
-                StreamReader streread = new StreamReader(tbPathOutput.Text + @"\Acc.txt");
-                string[] acc = streread.ReadToEnd().Split(':');
-                tbUsername.Text = acc[0];
-                tbPassword.Text = acc[1];
-                if (acc.Length == 3)
-                {
-                    tbMailSendPage.Text = acc[2];
-                }
-            }
         }
 
         void RunningPage(List<String> page, int[]pc)
@@ -564,17 +546,11 @@ namespace Dashboard_SponsorBlock.User_Control
                     tbPathOutput.Enabled = false;
                     rtbListPage.Enabled = true;
                     npdNumberThread.Enabled = true;
-                    btSaveAsFilePage.Enabled = true;
-                    btCopyListPage.Enabled = true;
-                    tbMailSendPage.Enabled = true;
-                    btSendPageMail.Enabled = true;
                     btPasteClipboard.Enabled = true;
                     btImportFile.Enabled = true;
                     btRewriteFilePage.Enabled = true;
                     rbChooseCrawl.Enabled = true;
                     rbChooseImportListVideo.Enabled = true;
-                    tbPassword.Enabled = true;
-                    tbUsername.Enabled = true;
                 }));                
             }
             else
@@ -583,17 +559,11 @@ namespace Dashboard_SponsorBlock.User_Control
                 {
                     rtbListPage.Enabled = false;
                     npdNumberThread.Enabled = false;
-                    btSaveAsFilePage.Enabled = false;
-                    btCopyListPage.Enabled = false;
-                    tbMailSendPage.Enabled = false;
-                    btSendPageMail.Enabled = false;
                     btPasteClipboard.Enabled = false;
                     btImportFile.Enabled = false;
                     btRewriteFilePage.Enabled = false;
                     rbChooseCrawl.Enabled = true;
                     rbChooseImportListVideo.Enabled = true;
-                    tbPassword.Enabled = false;
-                    tbUsername.Enabled = false;
                 }));               
             }
             #endregion
@@ -607,11 +577,7 @@ namespace Dashboard_SponsorBlock.User_Control
 
         private void btSaveAsFilePage_Click(object sender, System.EventArgs e)
         {
-            string Path = Class_Root.ChooseFile("Hãy chọn file để lưu. Nó sẽ bị ghi đè.");
-            if (Path != "")
-            {
-                Class_Root.MessageBox2Button(System.Drawing.Color.Yellow, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.Yellow, "Cảnh báo", "Nếu bạn chọn file đó, nó sẽ bị ghi đè đấy.\nBạn chắc chắn chứ?", "OK", "Không");
-            }
+
         }
 
         private void btImportFile_Click(object sender, System.EventArgs e)
@@ -627,38 +593,23 @@ namespace Dashboard_SponsorBlock.User_Control
         {
             rtbListPage.Enabled = true;
             npdNumberThread.Enabled = true;
-            btSaveAsFilePage.Enabled = true;
-            btCopyListPage.Enabled = true;
-            tbMailSendPage.Enabled = true;
-            btSendPageMail.Enabled = true;
             btPasteClipboard.Enabled = true;
             btImportFile.Enabled = true;
             btRewriteFilePage.Enabled = true;
-            tbPassword.Enabled = true;
-            tbUsername.Enabled = true;
         }
 
         private void rbChooseImportListVideo_CheckedChanged(object sender, System.EventArgs e)
         {
             rtbListPage.Enabled = false;
             npdNumberThread.Enabled = false;
-            btSaveAsFilePage.Enabled = false;
-            btCopyListPage.Enabled = false;
-            tbMailSendPage.Enabled = false;
-            btSendPageMail.Enabled = false;
             btPasteClipboard.Enabled = false;
             btImportFile.Enabled = false;
             btRewriteFilePage.Enabled = false;
-            tbUsername.Enabled = false;
-            tbPassword.Enabled = false;
         }
 
         private void btCopyListPage_Click(object sender, System.EventArgs e)
         {
-            if (rtbListPage.Text != "")
-            {
-                Clipboard.SetText(rtbListPage.Text);
-            }
+
         }
 
         private void btPasteClipboard_Click(object sender, System.EventArgs e)
@@ -686,28 +637,7 @@ namespace Dashboard_SponsorBlock.User_Control
 
         private void btSendPageMail_Click(object sender, System.EventArgs e)
         {
-            try
-            {
-                Thread thr = new Thread(() =>
-                {
-                    string content = "";
-                    Invoke((Action)(() =>
-                    {
-                        content = rtbListPage.Text;
-                    }));
-                    Class_Root.SendMail(tbUsername.Text, tbPassword.Text, tbMailSendPage.Text, "Gửi dữ liệu backup các trang theo dõi", content);
 
-                    StreamWriter stream = new StreamWriter(tbPathOutput.Text + @"\Acc.txt");
-                    stream.WriteLine("{0}:{1}:{2}", tbUsername.Text, tbPassword.Text, tbMailSendPage.Text);
-                    stream.Close();
-                });
-                thr.Start();
-            }
-            catch (Exception)
-            {
-                Class_Root.MessageBox1Button(System.Drawing.Color.Red, System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.Red, "Lỗi!", "Gửi mail lỗi.\nCó thể do lỗi trong đăng nhập hoặc 1 lí do khác.","OK");
-            }
-            
         }
 
         private void btRewriteFilePage_Click(object sender, EventArgs e)
@@ -729,17 +659,11 @@ namespace Dashboard_SponsorBlock.User_Control
                 #region Khoá toàn bộ control
                 rtbListPage.Enabled = false;
                 npdNumberThread.Enabled = false;
-                btSaveAsFilePage.Enabled = false;
-                btCopyListPage.Enabled = false;
-                tbMailSendPage.Enabled = false;
-                btSendPageMail.Enabled = false;
                 btPasteClipboard.Enabled = false;
                 btImportFile.Enabled = false;
                 btRewriteFilePage.Enabled = false;
                 rbChooseCrawl.Enabled = false;
                 rbChooseImportListVideo.Enabled = false;
-                tbPassword.Enabled = false;
-                tbUsername.Enabled = false;
                 #endregion
 
                 List<String> listdata = new List<string>();
@@ -804,6 +728,11 @@ namespace Dashboard_SponsorBlock.User_Control
             {
 
             }
+        }
+
+        private void btOpenFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", tbPathOutput.Text);
         }
     }
 }

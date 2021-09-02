@@ -40,7 +40,7 @@ namespace Dashboard_SponsorBlock.User_Control
             btDelete.Enabled = false;
             btSave.Enabled = false;
             dgvListVideo.DefaultCellStyle.Font = new Font("Segoe UI", 10.5F);
-            dgvListVideo.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9.75F);
+            dgvListVideo.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10.5F);
             tbPathVideo.Enabled = false;
             tbOutput.Enabled = false;
 
@@ -351,7 +351,6 @@ namespace Dashboard_SponsorBlock.User_Control
                 #endregion
 
                 #region Chạy file bat. Phải đợi cho đến khi xong
-                bool next = true;
                 Thread thr = new Thread(() =>
                 {
                     RunFileBat();

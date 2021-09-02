@@ -28,35 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbNameNamevideo = new System.Windows.Forms.Label();
             this.lbNameVideo = new System.Windows.Forms.Label();
             this.lbLongVideo = new System.Windows.Forms.Label();
             this.gbAllSegmentVideo = new System.Windows.Forms.GroupBox();
-            this.lbCopydgv = new System.Windows.Forms.Label();
             this.cbChooseTimeVideo = new System.Windows.Forms.ComboBox();
             this.lbChooseTime = new System.Windows.Forms.Label();
-            this.cbAlertSponsor = new Guna.UI2.WinForms.Guna2CheckBox();
             this.cbNotFoundFolder = new Guna.UI2.WinForms.Guna2CheckBox();
             this.dgvSubmissions = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSTT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcStartSecond = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcStartHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcEndSecond = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcEndHour = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbNameLongVideo = new System.Windows.Forms.Label();
-            this.nmudCountFilterEnd = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.nmudCountFilterStart = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.btCopyDgvStart = new System.Windows.Forms.Button();
-            this.btCopydgvEnd = new System.Windows.Forms.Button();
             this.btDeleteFilter = new System.Windows.Forms.Button();
-            this.btFilterStart = new System.Windows.Forms.Button();
-            this.btFilterEnd = new System.Windows.Forms.Button();
             this.btCopyEndSeaTB = new System.Windows.Forms.Button();
             this.btCopyStartSeaTB = new System.Windows.Forms.Button();
-            this.btFilter = new System.Windows.Forms.Button();
             this.tbNumberSearch = new System.Windows.Forms.TextBox();
             this.lbNumberSearch = new System.Windows.Forms.Label();
             this.btNextVideo = new System.Windows.Forms.Button();
@@ -72,12 +63,10 @@
             this.tbPathListVideo = new System.Windows.Forms.TextBox();
             this.btChooseOutoutStep3 = new System.Windows.Forms.Button();
             this.btChooseListVideo = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
+            this.btCopyProfile = new System.Windows.Forms.Button();
             this.btChooseProfileSele = new System.Windows.Forms.Button();
             this.gbAllSegmentVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubmissions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmudCountFilterEnd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmudCountFilterStart)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNameNamevideo
@@ -109,26 +98,17 @@
             // 
             // gbAllSegmentVideo
             // 
-            this.gbAllSegmentVideo.Controls.Add(this.lbCopydgv);
             this.gbAllSegmentVideo.Controls.Add(this.cbChooseTimeVideo);
             this.gbAllSegmentVideo.Controls.Add(this.lbChooseTime);
-            this.gbAllSegmentVideo.Controls.Add(this.cbAlertSponsor);
             this.gbAllSegmentVideo.Controls.Add(this.cbNotFoundFolder);
             this.gbAllSegmentVideo.Controls.Add(this.dgvSubmissions);
             this.gbAllSegmentVideo.Controls.Add(this.lbLongVideo);
             this.gbAllSegmentVideo.Controls.Add(this.lbNameLongVideo);
-            this.gbAllSegmentVideo.Controls.Add(this.nmudCountFilterEnd);
-            this.gbAllSegmentVideo.Controls.Add(this.nmudCountFilterStart);
             this.gbAllSegmentVideo.Controls.Add(this.lbNameVideo);
-            this.gbAllSegmentVideo.Controls.Add(this.btCopyDgvStart);
-            this.gbAllSegmentVideo.Controls.Add(this.btCopydgvEnd);
             this.gbAllSegmentVideo.Controls.Add(this.btDeleteFilter);
-            this.gbAllSegmentVideo.Controls.Add(this.btFilterStart);
             this.gbAllSegmentVideo.Controls.Add(this.lbNameNamevideo);
-            this.gbAllSegmentVideo.Controls.Add(this.btFilterEnd);
             this.gbAllSegmentVideo.Controls.Add(this.btCopyEndSeaTB);
             this.gbAllSegmentVideo.Controls.Add(this.btCopyStartSeaTB);
-            this.gbAllSegmentVideo.Controls.Add(this.btFilter);
             this.gbAllSegmentVideo.Controls.Add(this.tbNumberSearch);
             this.gbAllSegmentVideo.Controls.Add(this.lbNumberSearch);
             this.gbAllSegmentVideo.Location = new System.Drawing.Point(9, 107);
@@ -139,15 +119,6 @@
             this.gbAllSegmentVideo.TabIndex = 1;
             this.gbAllSegmentVideo.TabStop = false;
             this.gbAllSegmentVideo.Text = "Danh sách các phân đoạn đã tách";
-            // 
-            // lbCopydgv
-            // 
-            this.lbCopydgv.AutoSize = true;
-            this.lbCopydgv.Location = new System.Drawing.Point(356, 92);
-            this.lbCopydgv.Name = "lbCopydgv";
-            this.lbCopydgv.Size = new System.Drawing.Size(125, 16);
-            this.lbCopydgv.TabIndex = 9;
-            this.lbCopydgv.Text = "Copy cái đang chọn:";
             // 
             // cbChooseTimeVideo
             // 
@@ -160,29 +131,11 @@
             // lbChooseTime
             // 
             this.lbChooseTime.AutoSize = true;
-            this.lbChooseTime.Location = new System.Drawing.Point(656, 25);
+            this.lbChooseTime.Location = new System.Drawing.Point(685, 25);
             this.lbChooseTime.Name = "lbChooseTime";
-            this.lbChooseTime.Size = new System.Drawing.Size(94, 16);
+            this.lbChooseTime.Size = new System.Drawing.Size(62, 16);
             this.lbChooseTime.TabIndex = 7;
-            this.lbChooseTime.Text = "Điểm đầu - cuối";
-            // 
-            // cbAlertSponsor
-            // 
-            this.cbAlertSponsor.AutoSize = true;
-            this.cbAlertSponsor.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbAlertSponsor.CheckedState.BorderRadius = 2;
-            this.cbAlertSponsor.CheckedState.BorderThickness = 0;
-            this.cbAlertSponsor.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbAlertSponsor.Location = new System.Drawing.Point(798, 83);
-            this.cbAlertSponsor.Name = "cbAlertSponsor";
-            this.cbAlertSponsor.Size = new System.Drawing.Size(169, 20);
-            this.cbAlertSponsor.TabIndex = 6;
-            this.cbAlertSponsor.Text = "Cảnh báo sponsor (Demo)";
-            this.cbAlertSponsor.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.cbAlertSponsor.UncheckedState.BorderRadius = 2;
-            this.cbAlertSponsor.UncheckedState.BorderThickness = 0;
-            this.cbAlertSponsor.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.cbAlertSponsor.UseVisualStyleBackColor = true;
+            this.lbChooseTime.Text = "Tên Folder";
             // 
             // cbNotFoundFolder
             // 
@@ -191,7 +144,7 @@
             this.cbNotFoundFolder.CheckedState.BorderRadius = 2;
             this.cbNotFoundFolder.CheckedState.BorderThickness = 0;
             this.cbNotFoundFolder.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbNotFoundFolder.Location = new System.Drawing.Point(798, 58);
+            this.cbNotFoundFolder.Location = new System.Drawing.Point(649, 50);
             this.cbNotFoundFolder.Name = "cbNotFoundFolder";
             this.cbNotFoundFolder.Size = new System.Drawing.Size(189, 20);
             this.cbNotFoundFolder.TabIndex = 6;
@@ -204,43 +157,43 @@
             // 
             // dgvSubmissions
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvSubmissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            this.dgvSubmissions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvSubmissions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSubmissions.BackgroundColor = System.Drawing.Color.White;
             this.dgvSubmissions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvSubmissions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvSubmissions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSubmissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSubmissions.ColumnHeadersHeight = 66;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSubmissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvSubmissions.ColumnHeadersHeight = 22;
             this.dgvSubmissions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSubmissions.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvcSTT,
+            this.dgvcStartSecond,
+            this.dgvcStartHour,
+            this.dgvcEndSecond,
+            this.dgvcEndHour});
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSubmissions.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvSubmissions.EnableHeadersVisualStyles = false;
             this.dgvSubmissions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvSubmissions.Location = new System.Drawing.Point(10, 121);
+            this.dgvSubmissions.Location = new System.Drawing.Point(10, 79);
             this.dgvSubmissions.Name = "dgvSubmissions";
             this.dgvSubmissions.RowHeadersVisible = false;
             this.dgvSubmissions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSubmissions.Size = new System.Drawing.Size(978, 220);
+            this.dgvSubmissions.Size = new System.Drawing.Size(978, 262);
             this.dgvSubmissions.TabIndex = 5;
             this.dgvSubmissions.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.dgvSubmissions.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -255,7 +208,7 @@
             this.dgvSubmissions.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvSubmissions.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.dgvSubmissions.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvSubmissions.ThemeStyle.HeaderStyle.Height = 66;
+            this.dgvSubmissions.ThemeStyle.HeaderStyle.Height = 22;
             this.dgvSubmissions.ThemeStyle.ReadOnly = false;
             this.dgvSubmissions.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSubmissions.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -265,45 +218,50 @@
             this.dgvSubmissions.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvSubmissions.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // Column6
+            // dgvcSTT
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column6.Frozen = true;
-            this.Column6.HeaderText = "STT";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
+            this.dgvcSTT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvcSTT.Frozen = true;
+            this.dgvcSTT.HeaderText = "STT";
+            this.dgvcSTT.Name = "dgvcSTT";
+            this.dgvcSTT.ReadOnly = true;
+            this.dgvcSTT.Width = 50;
             // 
-            // Column7
+            // dgvcStartSecond
             // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column7.Frozen = true;
-            this.Column7.HeaderText = "Điểm đầu phân đoạn (Second)";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.dgvcStartSecond.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvcStartSecond.Frozen = true;
+            this.dgvcStartSecond.HeaderText = "Điểm đầu phân đoạn (Second)";
+            this.dgvcStartSecond.Name = "dgvcStartSecond";
+            this.dgvcStartSecond.ReadOnly = true;
+            this.dgvcStartSecond.Width = 220;
             // 
-            // Column8
+            // dgvcStartHour
             // 
-            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column8.Frozen = true;
-            this.Column8.HeaderText = "Điểm đầu phân đoạn (Hour - Minute)";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
+            this.dgvcStartHour.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvcStartHour.Frozen = true;
+            this.dgvcStartHour.HeaderText = "Điểm đầu phân đoạn (Hour - Minute)";
+            this.dgvcStartHour.Name = "dgvcStartHour";
+            this.dgvcStartHour.ReadOnly = true;
+            this.dgvcStartHour.Width = 240;
             // 
-            // Column9
+            // dgvcEndSecond
             // 
-            this.Column9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column9.Frozen = true;
-            this.Column9.HeaderText = "Điểm cuối phân đoan (Second)";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
+            this.dgvcEndSecond.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvcEndSecond.Frozen = true;
+            this.dgvcEndSecond.HeaderText = "Điểm cuối phân đoan (Second)";
+            this.dgvcEndSecond.Name = "dgvcEndSecond";
+            this.dgvcEndSecond.ReadOnly = true;
+            this.dgvcEndSecond.Width = 205;
             // 
-            // Column10
+            // dgvcEndHour
             // 
-            this.Column10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "Điểm cuối phân đoạn (Hour - Minute)";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
+            this.dgvcEndHour.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dgvcEndHour.Frozen = true;
+            this.dgvcEndHour.HeaderText = "Điểm cuối phân đoạn (Hour - Minute)";
+            this.dgvcEndHour.Name = "dgvcEndHour";
+            this.dgvcEndHour.ReadOnly = true;
+            this.dgvcEndHour.Width = 260;
             // 
             // lbNameLongVideo
             // 
@@ -314,165 +272,47 @@
             this.lbNameLongVideo.TabIndex = 0;
             this.lbNameLongVideo.Text = "Độ dài:";
             // 
-            // nmudCountFilterEnd
-            // 
-            this.nmudCountFilterEnd.BackColor = System.Drawing.Color.Transparent;
-            this.nmudCountFilterEnd.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nmudCountFilterEnd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.nmudCountFilterEnd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.nmudCountFilterEnd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nmudCountFilterEnd.DisabledState.Parent = this.nmudCountFilterEnd;
-            this.nmudCountFilterEnd.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
-            this.nmudCountFilterEnd.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
-            this.nmudCountFilterEnd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nmudCountFilterEnd.FocusedState.Parent = this.nmudCountFilterEnd;
-            this.nmudCountFilterEnd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nmudCountFilterEnd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.nmudCountFilterEnd.Location = new System.Drawing.Point(278, 83);
-            this.nmudCountFilterEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nmudCountFilterEnd.Maximum = new decimal(new int[] {
-            1661992959,
-            1808227885,
-            5,
-            0});
-            this.nmudCountFilterEnd.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmudCountFilterEnd.Name = "nmudCountFilterEnd";
-            this.nmudCountFilterEnd.ShadowDecoration.Parent = this.nmudCountFilterEnd;
-            this.nmudCountFilterEnd.Size = new System.Drawing.Size(72, 36);
-            this.nmudCountFilterEnd.TabIndex = 3;
-            this.nmudCountFilterEnd.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // nmudCountFilterStart
-            // 
-            this.nmudCountFilterStart.BackColor = System.Drawing.Color.Transparent;
-            this.nmudCountFilterStart.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nmudCountFilterStart.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.nmudCountFilterStart.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.nmudCountFilterStart.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.nmudCountFilterStart.DisabledState.Parent = this.nmudCountFilterStart;
-            this.nmudCountFilterStart.DisabledState.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(177)))), ((int)(((byte)(177)))));
-            this.nmudCountFilterStart.DisabledState.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(203)))), ((int)(((byte)(203)))));
-            this.nmudCountFilterStart.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.nmudCountFilterStart.FocusedState.Parent = this.nmudCountFilterStart;
-            this.nmudCountFilterStart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nmudCountFilterStart.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.nmudCountFilterStart.Location = new System.Drawing.Point(105, 83);
-            this.nmudCountFilterStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.nmudCountFilterStart.Maximum = new decimal(new int[] {
-            -1304428545,
-            434162106,
-            542,
-            0});
-            this.nmudCountFilterStart.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmudCountFilterStart.Name = "nmudCountFilterStart";
-            this.nmudCountFilterStart.ShadowDecoration.Parent = this.nmudCountFilterStart;
-            this.nmudCountFilterStart.Size = new System.Drawing.Size(63, 36);
-            this.nmudCountFilterStart.TabIndex = 3;
-            this.nmudCountFilterStart.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // btCopyDgvStart
-            // 
-            this.btCopyDgvStart.Location = new System.Drawing.Point(487, 86);
-            this.btCopyDgvStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btCopyDgvStart.Name = "btCopyDgvStart";
-            this.btCopyDgvStart.Size = new System.Drawing.Size(87, 28);
-            this.btCopyDgvStart.TabIndex = 2;
-            this.btCopyDgvStart.Text = "Điểm đầu";
-            this.btCopyDgvStart.UseVisualStyleBackColor = true;
-            // 
-            // btCopydgvEnd
-            // 
-            this.btCopydgvEnd.Location = new System.Drawing.Point(580, 86);
-            this.btCopydgvEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btCopydgvEnd.Name = "btCopydgvEnd";
-            this.btCopydgvEnd.Size = new System.Drawing.Size(87, 28);
-            this.btCopydgvEnd.TabIndex = 2;
-            this.btCopydgvEnd.Text = "Điểm cuối";
-            this.btCopydgvEnd.UseVisualStyleBackColor = true;
-            // 
             // btDeleteFilter
             // 
-            this.btDeleteFilter.Location = new System.Drawing.Point(705, 86);
+            this.btDeleteFilter.Location = new System.Drawing.Point(556, 44);
             this.btDeleteFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDeleteFilter.Name = "btDeleteFilter";
             this.btDeleteFilter.Size = new System.Drawing.Size(87, 28);
             this.btDeleteFilter.TabIndex = 2;
             this.btDeleteFilter.Text = "Xoá lọc";
             this.btDeleteFilter.UseVisualStyleBackColor = true;
-            // 
-            // btFilterStart
-            // 
-            this.btFilterStart.Location = new System.Drawing.Point(10, 86);
-            this.btFilterStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btFilterStart.Name = "btFilterStart";
-            this.btFilterStart.Size = new System.Drawing.Size(87, 28);
-            this.btFilterStart.TabIndex = 2;
-            this.btFilterStart.Text = "Lọc từ đầu";
-            this.btFilterStart.UseVisualStyleBackColor = true;
-            // 
-            // btFilterEnd
-            // 
-            this.btFilterEnd.Location = new System.Drawing.Point(184, 86);
-            this.btFilterEnd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btFilterEnd.Name = "btFilterEnd";
-            this.btFilterEnd.Size = new System.Drawing.Size(87, 28);
-            this.btFilterEnd.TabIndex = 2;
-            this.btFilterEnd.Text = "Lọc từ cuối";
-            this.btFilterEnd.UseVisualStyleBackColor = true;
+            this.btDeleteFilter.Click += new System.EventHandler(this.btDeleteFilter_Click);
             // 
             // btCopyEndSeaTB
             // 
-            this.btCopyEndSeaTB.Location = new System.Drawing.Point(591, 50);
+            this.btCopyEndSeaTB.Location = new System.Drawing.Point(440, 44);
             this.btCopyEndSeaTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btCopyEndSeaTB.Name = "btCopyEndSeaTB";
-            this.btCopyEndSeaTB.Size = new System.Drawing.Size(201, 28);
+            this.btCopyEndSeaTB.Size = new System.Drawing.Size(110, 28);
             this.btCopyEndSeaTB.TabIndex = 2;
-            this.btCopyEndSeaTB.Text = "Copy điểm cuối của phân đoạn";
+            this.btCopyEndSeaTB.Text = "Copy điểm cuối";
             this.btCopyEndSeaTB.UseVisualStyleBackColor = true;
+            this.btCopyEndSeaTB.Click += new System.EventHandler(this.btCopyEndSeaTB_Click);
             // 
             // btCopyStartSeaTB
             // 
-            this.btCopyStartSeaTB.Location = new System.Drawing.Point(390, 50);
+            this.btCopyStartSeaTB.Location = new System.Drawing.Point(330, 44);
             this.btCopyStartSeaTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btCopyStartSeaTB.Name = "btCopyStartSeaTB";
-            this.btCopyStartSeaTB.Size = new System.Drawing.Size(195, 28);
+            this.btCopyStartSeaTB.Size = new System.Drawing.Size(104, 28);
             this.btCopyStartSeaTB.TabIndex = 2;
-            this.btCopyStartSeaTB.Text = "Copy điểm đầu của phân đoạn";
+            this.btCopyStartSeaTB.Text = "Copy điểm đầu";
             this.btCopyStartSeaTB.UseVisualStyleBackColor = true;
-            // 
-            // btFilter
-            // 
-            this.btFilter.Location = new System.Drawing.Point(295, 50);
-            this.btFilter.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btFilter.Name = "btFilter";
-            this.btFilter.Size = new System.Drawing.Size(87, 28);
-            this.btFilter.TabIndex = 2;
-            this.btFilter.Text = "Lọc";
-            this.btFilter.UseVisualStyleBackColor = true;
+            this.btCopyStartSeaTB.Click += new System.EventHandler(this.btCopyStartSeaTB_Click);
             // 
             // tbNumberSearch
             // 
             this.tbNumberSearch.Location = new System.Drawing.Point(171, 50);
             this.tbNumberSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbNumberSearch.Name = "tbNumberSearch";
-            this.tbNumberSearch.Size = new System.Drawing.Size(116, 21);
+            this.tbNumberSearch.Size = new System.Drawing.Size(153, 21);
             this.tbNumberSearch.TabIndex = 1;
+            this.tbNumberSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbNumberSearch_KeyDown);
             // 
             // lbNumberSearch
             // 
@@ -606,15 +446,16 @@
             this.btChooseListVideo.UseVisualStyleBackColor = true;
             this.btChooseListVideo.Click += new System.EventHandler(this.btChooseListVideo_Click);
             // 
-            // button24
+            // btCopyProfile
             // 
-            this.button24.Location = new System.Drawing.Point(922, 41);
-            this.button24.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(87, 28);
-            this.button24.TabIndex = 2;
-            this.button24.Text = "Cài đặt ....";
-            this.button24.UseVisualStyleBackColor = true;
+            this.btCopyProfile.Location = new System.Drawing.Point(922, 41);
+            this.btCopyProfile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btCopyProfile.Name = "btCopyProfile";
+            this.btCopyProfile.Size = new System.Drawing.Size(87, 28);
+            this.btCopyProfile.TabIndex = 2;
+            this.btCopyProfile.Text = "Copy mẫu";
+            this.btCopyProfile.UseVisualStyleBackColor = true;
+            this.btCopyProfile.Click += new System.EventHandler(this.btCopyProfile_Click);
             // 
             // btChooseProfileSele
             // 
@@ -642,7 +483,7 @@
             this.Controls.Add(this.tbPathListVideo);
             this.Controls.Add(this.tbProfileSelenium);
             this.Controls.Add(this.btChooseListVideo);
-            this.Controls.Add(this.button24);
+            this.Controls.Add(this.btCopyProfile);
             this.Controls.Add(this.btChooseProfileSele);
             this.Controls.Add(this.btChooseOutoutStep3);
             this.Controls.Add(this.tbOutputStep3);
@@ -654,8 +495,6 @@
             this.gbAllSegmentVideo.ResumeLayout(false);
             this.gbAllSegmentVideo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubmissions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmudCountFilterEnd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nmudCountFilterStart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -667,12 +506,7 @@
         private System.Windows.Forms.Label lbNameVideo;
         private System.Windows.Forms.Label lbLongVideo;
         private System.Windows.Forms.GroupBox gbAllSegmentVideo;
-        private Guna.UI2.WinForms.Guna2NumericUpDown nmudCountFilterEnd;
-        private Guna.UI2.WinForms.Guna2NumericUpDown nmudCountFilterStart;
-        private System.Windows.Forms.Button btFilterStart;
-        private System.Windows.Forms.Button btFilterEnd;
         private System.Windows.Forms.Button btCopyStartSeaTB;
-        private System.Windows.Forms.Button btFilter;
         private System.Windows.Forms.TextBox tbNumberSearch;
         private System.Windows.Forms.Label lbNumberSearch;
         private System.Windows.Forms.Label lbNameLongVideo;
@@ -690,21 +524,17 @@
         private System.Windows.Forms.TextBox tbPathListVideo;
         private System.Windows.Forms.Button btChooseOutoutStep3;
         private System.Windows.Forms.Button btChooseListVideo;
-        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button btCopyProfile;
         private Guna.UI2.WinForms.Guna2DataGridView dgvSubmissions;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private Guna.UI2.WinForms.Guna2CheckBox cbAlertSponsor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSTT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcStartSecond;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcStartHour;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcEndSecond;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcEndHour;
         private Guna.UI2.WinForms.Guna2CheckBox cbNotFoundFolder;
         private System.Windows.Forms.ComboBox cbChooseTimeVideo;
         private System.Windows.Forms.Label lbChooseTime;
         private System.Windows.Forms.Button btDeleteFilter;
-        private System.Windows.Forms.Label lbCopydgv;
-        private System.Windows.Forms.Button btCopyDgvStart;
-        private System.Windows.Forms.Button btCopydgvEnd;
         private System.Windows.Forms.Button btChooseProfileSele;
     }
 }

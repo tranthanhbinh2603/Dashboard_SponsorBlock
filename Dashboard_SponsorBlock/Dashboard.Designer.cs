@@ -37,7 +37,6 @@
             this.pbIconSponsorBlock = new System.Windows.Forms.PictureBox();
             this.pnMain = new System.Windows.Forms.Panel();
             this.pnTab = new System.Windows.Forms.Panel();
-            this.btSettings = new Guna.UI2.WinForms.Guna2Button();
             this.btStep4 = new Guna.UI2.WinForms.Guna2Button();
             this.btStep3 = new Guna.UI2.WinForms.Guna2Button();
             this.btStep2 = new Guna.UI2.WinForms.Guna2Button();
@@ -117,7 +116,6 @@
             // 
             // pnTab
             // 
-            this.pnTab.Controls.Add(this.btSettings);
             this.pnTab.Controls.Add(this.btStep4);
             this.pnTab.Controls.Add(this.btStep3);
             this.pnTab.Controls.Add(this.btStep2);
@@ -127,28 +125,6 @@
             this.pnTab.Name = "pnTab";
             this.pnTab.Size = new System.Drawing.Size(1012, 70);
             this.pnTab.TabIndex = 0;
-            // 
-            // btSettings
-            // 
-            this.btSettings.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.btSettings.CheckedState.CustomBorderColor = System.Drawing.Color.Red;
-            this.btSettings.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btSettings.CheckedState.ForeColor = System.Drawing.Color.Black;
-            this.btSettings.CheckedState.Parent = this.btSettings;
-            this.btSettings.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 3);
-            this.btSettings.CustomImages.Parent = this.btSettings;
-            this.btSettings.FillColor = System.Drawing.Color.White;
-            this.btSettings.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSettings.ForeColor = System.Drawing.Color.Black;
-            this.btSettings.HoverState.CustomBorderColor = System.Drawing.Color.Red;
-            this.btSettings.HoverState.Parent = this.btSettings;
-            this.btSettings.Location = new System.Drawing.Point(620, 0);
-            this.btSettings.Name = "btSettings";
-            this.btSettings.ShadowDecoration.Parent = this.btSettings;
-            this.btSettings.Size = new System.Drawing.Size(149, 70);
-            this.btSettings.TabIndex = 0;
-            this.btSettings.Text = "Cài đặt";
-            this.btSettings.Click += new System.EventHandler(this.btSettings_Click);
             // 
             // btStep4
             // 
@@ -276,7 +252,6 @@
         public Guna.UI2.WinForms.Guna2Button btStep4;
         public Guna.UI2.WinForms.Guna2Button btStep3;
         public Guna.UI2.WinForms.Guna2Button btStep2;
-        public Guna.UI2.WinForms.Guna2Button btSettings;
         protected internal Guna.UI2.WinForms.Guna2Button btStep1;
         public System.Windows.Forms.Panel pnMain;
         public Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
