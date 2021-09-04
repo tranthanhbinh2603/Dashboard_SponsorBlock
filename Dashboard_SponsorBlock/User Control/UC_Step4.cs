@@ -1,10 +1,7 @@
 ﻿using Dashboard_SponsorBlock.Function;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Drawing;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Dashboard_SponsorBlock.User_Control
@@ -23,6 +20,10 @@ namespace Dashboard_SponsorBlock.User_Control
 
             dgvSubmissions.DefaultCellStyle.Font = new Font("Segoe UI", 10.5F);
             dgvSubmissions.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10.5F);
+            dgvSubmissions.AllowUserToAddRows = false;
+
+            btNextVideo.Enabled = false;
+            btNextVideoandProcessing.Enabled = false;
         }
 
         private void btChooseOutoutStep3_Click(object sender, System.EventArgs e)
@@ -54,7 +55,16 @@ namespace Dashboard_SponsorBlock.User_Control
         {
             if (e.KeyCode == Keys.Enter)
             {
-                MessageBox.Show("Đã Enter");
+                if (tbNumberSearch.Text == "")
+                {
+                    Class_Step4.DeleteAllRow(dgvSubmissions);
+                    Class_Step4.AddRow(list, dgvSubmissions);
+                }
+                else
+                {
+                    Class_Step4.DeleteAllRow(dgvSubmissions);
+                    Class_Step4.AddRow(list, dgvSubmissions, int.Parse(tbNumberSearch.Text));
+                }                
             }
         }
 
@@ -90,15 +100,19 @@ namespace Dashboard_SponsorBlock.User_Control
 
         private void btDeleteFilter_Click(object sender, System.EventArgs e)
         {
-            if (dgvSubmissions.RowCount != 0)
-            {
-                dgvSubmissions.Rows.Clear();
-            }
+            Class_Step4.DeleteAllRow(dgvSubmissions);
+            Class_Step4.AddRow(list, dgvSubmissions);
+        }
 
-            foreach (var item in list)
-            {
+        private void btRun_Click(object sender, System.EventArgs e)
+        {
+            //Class_Step4.LoadList(ref list, @"D:\Project\Project_PySceneDetect_GUI\bin\Debug\test-Scenes.csv");
+            //Class_Step4.AddRow(list, dgvSubmissions);
+        }
 
-            }
+        private void btExit_Click(object sender, System.EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
