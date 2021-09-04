@@ -21,3 +21,4 @@ D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\WebDriver.xml
 D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\obj\Debug\Dashboard_SponsorBlock.User_Control.UC_Step1.resources
 D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\xNetStandart.dll
 D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\xNetStandart.pdb
+D:\Project\Dashboard_SponsorBlock\Dashboard_SponsorBlock\bin\Debug\KAutoHelper.dll

@@ -1,5 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using KAutoHelper;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Dashboard_SponsorBlock.Function
@@ -12,6 +16,15 @@ namespace Dashboard_SponsorBlock.Function
         public string EndSec { get; set; }
         public string EndHour { get; set; }
     }
+
+    class VideoInfo2
+    {
+        public string IDVideo { get; set; }
+        public string NameVideo { get; set; }
+        public string NameChannel { get; set; }
+        public string Time { get; set; }
+    }
+
     class Class_Step4
     {
         public static void AddRow(List<OneScene> list, DataGridView dgv)
@@ -63,6 +76,23 @@ namespace Dashboard_SponsorBlock.Function
             dgv.Rows[0].Cells[2].Value = list[cs - 1].StartHour;
             dgv.Rows[0].Cells[3].Value = list[cs - 1].EndSec;
             dgv.Rows[0].Cells[4].Value = list[cs - 1].EndHour;
+        }
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+
+        private const UInt32 WM_CLOSE = 0x0010;
+
+        public static void CloseWindow(IntPtr hwnd)
+        {
+            SendMessage(hwnd, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+        }
+
+        public static void ChangeFolder(string path)
+        {
+            IntPtr hdle = AutoControl.FindWindowHandle("CabinetWClass", null);
+            CloseWindow(hdle);
+            Process.Start("explorer.exe", path);
         }
     }
 }

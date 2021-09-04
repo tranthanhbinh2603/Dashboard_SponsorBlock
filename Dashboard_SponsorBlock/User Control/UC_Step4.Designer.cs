@@ -65,6 +65,8 @@
             this.btChooseListVideo = new System.Windows.Forms.Button();
             this.btCopyProfile = new System.Windows.Forms.Button();
             this.btChooseProfileSele = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.gbAllSegmentVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSubmissions)).BeginInit();
             this.SuspendLayout();
@@ -127,6 +129,7 @@
             this.cbChooseTimeVideo.Name = "cbChooseTimeVideo";
             this.cbChooseTimeVideo.Size = new System.Drawing.Size(121, 24);
             this.cbChooseTimeVideo.TabIndex = 8;
+            this.cbChooseTimeVideo.SelectedValueChanged += new System.EventHandler(this.cbChooseTimeVideo_SelectedValueChanged);
             // 
             // lbChooseTime
             // 
@@ -332,6 +335,7 @@
             this.btNextVideo.TabIndex = 2;
             this.btNextVideo.Text = "Next > ";
             this.btNextVideo.UseVisualStyleBackColor = true;
+            this.btNextVideo.Click += new System.EventHandler(this.btNextVideo_Click);
             // 
             // btNextVideoandProcessing
             // 
@@ -342,6 +346,7 @@
             this.btNextVideoandProcessing.TabIndex = 2;
             this.btNextVideoandProcessing.Text = "Next nhưng đang xử lí";
             this.btNextVideoandProcessing.UseVisualStyleBackColor = true;
+            this.btNextVideoandProcessing.Click += new System.EventHandler(this.btNextVideoandProcessing_Click);
             // 
             // btExit
             // 
@@ -367,12 +372,12 @@
             // 
             // btHelp
             // 
-            this.btHelp.Location = new System.Drawing.Point(482, 465);
+            this.btHelp.Location = new System.Drawing.Point(449, 465);
             this.btHelp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btHelp.Name = "btHelp";
-            this.btHelp.Size = new System.Drawing.Size(87, 28);
+            this.btHelp.Size = new System.Drawing.Size(120, 28);
             this.btHelp.TabIndex = 2;
-            this.btHelp.Text = "Help";
+            this.btHelp.Text = "Copy gợi ý trợ giúp";
             this.btHelp.UseVisualStyleBackColor = true;
             // 
             // lbOutputStep3
@@ -470,6 +475,26 @@
             this.btChooseProfileSele.UseVisualStyleBackColor = true;
             this.btChooseProfileSele.Click += new System.EventHandler(this.btChooseProfileSele_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(336, 465);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 28);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Chỉ mở profile";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(243, 465);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(87, 28);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Help";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // UC_Step4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -479,6 +504,8 @@
             this.Controls.Add(this.lbProfileSelenium);
             this.Controls.Add(this.lbOutputStep3);
             this.Controls.Add(this.lbListVideo);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btHelp);
             this.Controls.Add(this.btNextVideoandProcessing);
             this.Controls.Add(this.btRun);
@@ -538,5 +565,7 @@
         private System.Windows.Forms.Label lbChooseTime;
         private System.Windows.Forms.Button btDeleteFilter;
         private System.Windows.Forms.Button btChooseProfileSele;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

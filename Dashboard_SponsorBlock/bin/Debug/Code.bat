@@ -1,4 +1,5 @@
 @echo off
-scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\6Bk-BZu6e_I.mp4" --output "D:\Out Synce\6Bk-BZu6e_I.mp4" detect-content list-scenes save-images
-scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\cqHLlm5KOb4.mp4" --output "D:\Out Synce\cqHLlm5KOb4.mp4" detect-content list-scenes save-images
-scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\EU5hRz1Fl3M.mp4" --output "D:\Out Synce\EU5hRz1Fl3M.mp4" detect-content list-scenes
+scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\q9vpFX9kRKY.mp4" --output "D:\Out Synce\q9vpFX9kRKY.mp4\From 0 to 00-01-00" time --start 0 --end 00:01:00 detect-content list-scenes save-images
+scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\q9vpFX9kRKY.mp4" --output "D:\Out Synce\q9vpFX9kRKY.mp4\From 00-12-00 to 00-15-00" time --start 00:12:00 --end 00:15:00 detect-content list-scenes save-images
+scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\q9vpFX9kRKY.mp4" --output "D:\Out Synce\q9vpFX9kRKY.mp4\From 00-22-00 to end video" time --start 00:22:00 detect-content list-scenes save-images
+scenedetect --input "D:\Test Dashboard SponsorBlock\VideoDownload\tSb_XpNb-tw.mp4" --output "D:\Out Synce\tSb_XpNb-tw.mp4" detect-content list-scenes save-images
