@@ -17,3 +17,6 @@ Step 1:
 Step 2:
 - Có thông báo riêng sau khi làm xong (Chưa làm)
 - Disable toàn bộ control khi đang chạy code (kể cả button chọn mục)
+
+Step 4:
+- Thêm tuỳ chọn copy mã lỗi gửi cho VIP User

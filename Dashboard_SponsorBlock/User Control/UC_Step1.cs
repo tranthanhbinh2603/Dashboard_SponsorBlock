@@ -43,7 +43,7 @@ namespace Dashboard_SponsorBlock.User_Control
             if (rbChooseCrawl.Checked == true)
             {
                 #region Tạo các trình Selenium
-                List<ChromeDriver> listChrome = new List<ChromeDriver>();
+                List<Boolean> listChrome = new List<Boolean>();
                 var driverService = ChromeDriverService.CreateDefaultService();
                 driverService.HideCommandPromptWindow = true;
                 ChromeOptions option = new ChromeOptions();
@@ -52,8 +52,9 @@ namespace Dashboard_SponsorBlock.User_Control
                 option.AddArguments("--disable-notifications");
                 for (int i = 1; i <= npdNumberThread.Value; i++)
                 {
-                    ChromeDriver driver = new ChromeDriver(driverService, option);
-                    listChrome.Add(driver);
+                    //ChromeDriver driver = new ChromeDriver(driverService, option);
+                    //listChrome.Add(driver);
+                    listChrome.Add(true);
                 }
                 #endregion
 
@@ -69,6 +70,10 @@ namespace Dashboard_SponsorBlock.User_Control
                         {
                             for (int z = 0; z < pc[copyi]; z++)
                             {
+                                ChromeDriver chrome = new ChromeDriver(driverService, option);
+                                listvideo.Clear();
+                                cs_video = 1;
+
                                 #region Tách dữ liệu tạo ra 2 trường Page và List chứa những video trước đó
                                 string link = page[z].Substring(0, page[z].IndexOf(','));
                                 string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
@@ -77,13 +82,13 @@ namespace Dashboard_SponsorBlock.User_Control
                                 #region Đi đến trang cần tìm. Tiện lấy tên kênh luôn.
                                 if (link.IndexOf("https://") == -1)
                                 {
-                                    listChrome[copyi].Navigate().GoToUrl("https://" + link);
+                                    chrome.Navigate().GoToUrl("https://" + link);
                                 }
                                 else
                                 {
-                                    listChrome[copyi].Navigate().GoToUrl(link);
+                                    chrome.Navigate().GoToUrl(link);
                                 }
-                                string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
+                                string nameChannel = Class_Step1.Get_Channel_Name(chrome.PageSource.ToString());
                                 #endregion
 
                                 #region Tạo list chứa các thông tin: link, name, time, name channel
@@ -96,8 +101,8 @@ namespace Dashboard_SponsorBlock.User_Control
                                 while (Next)
                                 {
                                     #region Thực thi lấy thông tin: link, name, time, name channel
-                                    Class_Step1.Get_Link_And_Name_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo, ref nameVideo);
-                                    Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
+                                    Class_Step1.Get_Link_And_Name_Video(chrome.PageSource.ToString(), ref linkVideo, ref nameVideo);
+                                    Class_Step1.Get_Time_Video(chrome.PageSource.ToString(), ref timeVideo);
                                     #endregion
 
                                     #region Xác nhận ra được video cũ, video mới
@@ -110,9 +115,9 @@ namespace Dashboard_SponsorBlock.User_Control
                                     int kq = Class_Step1.Scan_2_List(linkVideo, listVideoPre, cs_video);
                                     if (kq == -1)
                                     {
-                                        IJavaScriptExecutor js = listChrome[copyi] as IJavaScriptExecutor;
+                                        IJavaScriptExecutor js = chrome as IJavaScriptExecutor;
                                         Int64 dataFromJS = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
-                                        listChrome[copyi].ExecuteScript("window.scrollTo(0, " + dataFromJS + ");");
+                                        chrome.ExecuteScript("window.scrollTo(0, " + dataFromJS + ");");
 
                                         cs_video = linkVideo.Count;
 
@@ -120,11 +125,13 @@ namespace Dashboard_SponsorBlock.User_Control
                                         nameVideo.Clear();
                                         timeVideo.Clear();
 
+                                        var sw = Stopwatch.StartNew();
                                         while (true)
-                                        {
+                                        {                                            
                                             Int64 dataFromJSNew = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
-                                            if (dataFromJSNew != dataFromJS)
+                                            if ((dataFromJSNew != dataFromJS) || (sw.ElapsedMilliseconds >= 15000))
                                             {
+                                                sw.Stop();
                                                 break;
                                             }
                                         }
@@ -188,21 +195,15 @@ namespace Dashboard_SponsorBlock.User_Control
                                         }
                                     }
                                     #endregion
-                                }));                               
+                                }));
 
-                                #region Xoá toàn bộ Video trong List, để chuẩn bị quét page khác
-                                if (listvideo.Count >= 1)
-                                {
-                                    while (listvideo.Count != 0)
-                                    {
-                                        listvideo.RemoveAt(0);
-                                    }
-                                }
+                                #region Xoá toàn bộ Video trong List, để chuẩn bị quét page khác. Đóng trực tiếp Selenium tránh bị disconnect
+                                listvideo.Clear();
+                                chrome.Quit();
                                 #endregion
                             }
                             #region Chạy xong Page rồi thì tắt Sele và xoá trong mảng để cho hệ thống biết mà dừng Thread sang bước tiếp theo
-                            listChrome[copyi].Quit();
-                            listChrome[copyi] = null;
+                            listChrome[copyi] = false;
                             #endregion
                         });
                         thr.Start();
@@ -216,6 +217,7 @@ namespace Dashboard_SponsorBlock.User_Control
                         {
                             for (int z = pc[copyi - 1]; z < pc[copyi]; z++)
                             {
+                                ChromeDriver chrome = new ChromeDriver(driverService, option);
                                 #region Tách dữ liệu tạo ra 2 trường Page và List chứa những video trước đó
                                 string link = page[z].Substring(0, page[z].IndexOf(','));
                                 string videoPrevious = page[z].Substring(page[z].IndexOf(',') + 1, page[z].Length - page[z].IndexOf(',') - 1);
@@ -224,13 +226,13 @@ namespace Dashboard_SponsorBlock.User_Control
                                 #region Đi đến trang cần tìm. Tiện lấy tên kênh luôn.
                                 if (link.IndexOf("https://") == -1)
                                 {
-                                    listChrome[copyi].Navigate().GoToUrl("https://" + link);
+                                    chrome.Navigate().GoToUrl("https://" + link);
                                 }
                                 else
                                 {
-                                    listChrome[copyi].Navigate().GoToUrl(link);
+                                    chrome.Navigate().GoToUrl(link);
                                 }
-                                string nameChannel = Class_Step1.Get_Channel_Name(listChrome[copyi].PageSource.ToString());
+                                string nameChannel = Class_Step1.Get_Channel_Name(chrome.PageSource.ToString());
                                 #endregion
 
                                 #region Tạo list chứa các thông tin: link, name, time, name channel
@@ -243,8 +245,8 @@ namespace Dashboard_SponsorBlock.User_Control
                                 while (Next)
                                 {
                                     #region Thực thi lấy thông tin: link, name, time, name channel
-                                    Class_Step1.Get_Link_And_Name_Video(listChrome[copyi].PageSource.ToString(), ref linkVideo, ref nameVideo);
-                                    Class_Step1.Get_Time_Video(listChrome[copyi].PageSource.ToString(), ref timeVideo);
+                                    Class_Step1.Get_Link_And_Name_Video(chrome.PageSource.ToString(), ref linkVideo, ref nameVideo);
+                                    Class_Step1.Get_Time_Video(chrome.PageSource.ToString(), ref timeVideo);
                                     #endregion
 
                                     #region Xác nhận ra được video cũ, video mới
@@ -257,9 +259,9 @@ namespace Dashboard_SponsorBlock.User_Control
                                     int kq = Class_Step1.Scan_2_List(linkVideo, listVideoPre, cs_video);
                                     if (kq == -1)
                                     {
-                                        IJavaScriptExecutor js = listChrome[copyi] as IJavaScriptExecutor;
+                                        IJavaScriptExecutor js = chrome as IJavaScriptExecutor;
                                         Int64 dataFromJS = (Int64)js.ExecuteScript("return document.documentElement.scrollHeight;");
-                                        listChrome[copyi].ExecuteScript("window.scrollTo(0, " + dataFromJS + ");");
+                                        chrome.ExecuteScript("window.scrollTo(0, " + dataFromJS + ");");
 
                                         cs_video = linkVideo.Count;
 
@@ -349,8 +351,7 @@ namespace Dashboard_SponsorBlock.User_Control
                                 #endregion
                             }
                             #region Chạy xong Page rồi thì tắt Sele và xoá trong mảng để cho hệ thống biết mà dừng Thread sang bước tiếp theo
-                            listChrome[copyi].Quit();
-                            listChrome[copyi] = null;
+                            listChrome[copyi] = false;
                             #endregion
                         });
                         thr.Start();
@@ -366,7 +367,7 @@ namespace Dashboard_SponsorBlock.User_Control
 
                     for (int i = 0; i < listChrome.Count; i++)
                     {
-                        if (listChrome[i] == null)
+                        if (listChrome[i] == false)
                         {
                             countOff++;
                         }
